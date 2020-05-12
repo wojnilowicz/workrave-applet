@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-15 12:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/contents/config/config.qml:6
+#, kde-format
+msgid "Timers"
+msgstr ""
+
+#: src/contents/config/config.qml:12
+#, kde-format
+msgid "Appearance"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:30
+#, kde-format
+msgid "Display progress bar"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:43
+#, kde-format
+msgid "Background in normal state"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:48
+#, kde-format
+msgid "Background in overdue state"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:53
+#, kde-format
+msgid "Foreground in activity state"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:58
+#, kde-format
+msgid "Foreground at idle time in elapsed time"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:63
+#, kde-format
+msgid "Foreground at idle time"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:69
+#: src/contents/ui/config/ConfigAppearance.qml:153
+#, kde-format
+msgid "Height multiplier"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:87
+#, kde-format
+msgid "Display label"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:102
+#, kde-format
+msgid "Use custom font"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:117
+#, kde-format
+msgid "Custom font..."
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:131
+#, kde-format
+msgid "Reset custom font to theme default."
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:148
+#, kde-format
+msgid "Color"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:164
+#, kde-format
+msgid "Misc"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:174
+#, kde-format
+msgid "Extra width per timer"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:183
+#, kde-format
+msgid "Spacing between timers"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:192
+#, kde-format
+msgid "Use Workrave colors"
+msgstr ""
+
+#: src/contents/ui/config/ConfigAppearance.qml:204
+#, kde-format
+msgid "Use system theme colors"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:17
+#, kde-format
+msgid "Enable micro break timer"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:22
+#, kde-format
+msgid "Enable rest timer"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:27
+#, kde-format
+msgid "Enable daily limit timer"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:32
+#, kde-format
+msgid "Detect Workrave configuration changes"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:34
+#, kde-format
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:41
+#, kde-format
+msgid "Update interval in seconds"
+msgstr ""
+
+#: src/contents/ui/config/ConfigTimers.qml:44
+#, kde-format
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr ""
+
+#: src/contents/ui/main.qml:272
+#, kde-format
+msgid "Reload Workrave configuration"
+msgstr ""
+
+#: src/contents/ui/main.qml:273
+#, kde-format
+msgid "Recalculate applet size"
+msgstr ""
+
+#: src/contents/ui/main.qml:284
+#, kde-format
+msgid "Workrave not installed"
+msgstr ""
+
+#: src/contents/ui/main.qml:285
+#, kde-format
+msgid "Please install Workrave."
+msgstr ""
+
+#: src/contents/ui/main.qml:336
+#, kde-format
+msgid "No Workrave timers added"
+msgstr ""
+
+#: src/contents/ui/main.qml:337
+#, kde-format
+msgid "Please add a timer in applet settings."
+msgstr ""

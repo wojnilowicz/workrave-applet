@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+    <kcfgfile name=""/>
+
+    <group name="Timers">
+        <entry name="microTimer" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="restTimer" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="dailyTimer" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="detectWorkraveConfigurationChanges" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="updateInterval" type="Double">
+            <default>1.0</default>
+        </entry>
+    </group>
+
+    <group name="Appearance">
+        <entry name="progressBarNormalBackground" type="Color">
+            <default>#F6F5F4</default>
+        </entry>
+
+        <entry name="progressBarOverdueBackground" type="Color">
+            <default>#FFA500</default>
+        </entry>
+
+        <entry name="progressBarNormalForeground" type="Color">
+            <default>#ADD8E6</default>
+        </entry>
+
+        <entry name="progressBarRestingElapsedForeground" type="Color">
+            <default>#00D4B2</default>
+        </entry>
+
+        <entry name="progressBarRestingForeground" type="Color">
+            <default>#90EE90</default>
+        </entry>
+
+        <entry name="customFont" type="Font">
+        </entry>
+
+        <entry name="useCustomFont" type="Bool">
+          <default>false</default>
+        </entry>
+
+        <entry name="fontColor" type="Color">
+            <default>#000000</default>
+        </entry>
+
+        <entry name="progressBarHeightMultiplier" type="Double">
+            <default>0.8</default>
+        </entry>
+
+        <entry name="timersExtraWidth" type="Int">
+            <default>0</default>
+        </entry>
+
+        <entry name="timersSpacing" type="Int">
+            <default>1</default>
+        </entry>
+
+        <entry name="fontHeightMultiplier" type="Double">
+            <default>1.0</default>
+        </entry>
+
+        <entry name="progressBarEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="labelEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+    </group>
+
+</kcfg>
