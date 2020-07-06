@@ -48,7 +48,7 @@ Column {
     id: detectWorkraveConfigurationChanges
     text: i18n("Detect Workrave configuration changes")
     ToolTip {
-      text: i18n("Disable if performance is of concern, and you want to update it manually in context menu.")
+      text: i18nc("The Applet can synchronize its settings with Workrave automatically, at certain time intervals, which will be using some CPU resources. The alternative is letting the user to do it manually only when needed.", "Disable if performance is of concern, and you want to update it manually in context menu.")
     }
   }
 
@@ -58,7 +58,7 @@ Column {
     realText: i18n("Update interval in seconds")
 
 
-    tooltipText: i18n("Set higher if performance is of concern, and you don't need frequent timer readings.")
+    tooltipText: i18nc("Timers can report their status e.g. every 5 seconds (instead of every 1 second) and thus need less CPU resources.", "Set higher if performance is of concern, and you don't need frequent timer readings.")
 
     decimals: 1
     realStepSize: 0.1

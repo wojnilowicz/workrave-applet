@@ -1,12 +1,12 @@
 # Copyright (C) 2020 This file is copyright:
-# This file is distributed under the same license as the Workrave Plasma applet package.
+# This file is distributed under the same license as the workrave-applet package.
 #
 # Johnny Jazeix <jazeix@gmail.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: Workrave Plasma applet\n"
+"Project-Id-Version: workrave-applet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
-"POT-Creation-Date: 2020-05-15 12:20+0200\n"
+"POT-Creation-Date: 2020-07-06 19:56+0200\n"
 "PO-Revision-Date: 2020-07-05 21:32+0200\n"
 "Last-Translator: Johnny Jazeix <jazeix@gmail.com>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -17,167 +17,179 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: src/contents/config/config.qml:6
+#: src/contents/config/config.qml:23
 #, kde-format
 msgid "Timers"
 msgstr "Minuteurs"
 
-#: src/contents/config/config.qml:12
+#: src/contents/config/config.qml:29
 #, kde-format
 msgid "Appearance"
 msgstr "Apparence"
 
-#: src/contents/ui/config/ConfigAppearance.qml:30
+#: src/contents/ui/config/ConfigAppearance.qml:47
 #, kde-format
 msgid "Display progress bar"
 msgstr "Afficher la barre de progression"
 
-#: src/contents/ui/config/ConfigAppearance.qml:43
+#: src/contents/ui/config/ConfigAppearance.qml:60
 #, kde-format
 msgid "Background in normal state"
 msgstr "Arrière-plan en état normal"
 
-#: src/contents/ui/config/ConfigAppearance.qml:48
+#: src/contents/ui/config/ConfigAppearance.qml:65
 #, kde-format
 msgid "Background in overdue state"
 msgstr "Arrière-plan quand le temps est dépassé"
 
-#: src/contents/ui/config/ConfigAppearance.qml:53
+#: src/contents/ui/config/ConfigAppearance.qml:70
 #, kde-format
 msgid "Foreground in activity state"
 msgstr "Avant-plan en état d'activité"
 
-#: src/contents/ui/config/ConfigAppearance.qml:58
+#: src/contents/ui/config/ConfigAppearance.qml:75
 #, kde-format
 msgid "Foreground at idle time in elapsed time"
-msgstr "Avant-plan pendant le temps d'inactivité par rapport au temps déjà effectué"
+msgstr ""
+"Avant-plan pendant le temps d'inactivité par rapport au temps déjà effectué"
 
-#: src/contents/ui/config/ConfigAppearance.qml:63
+#: src/contents/ui/config/ConfigAppearance.qml:80
 #, kde-format
 msgid "Foreground at idle time"
 msgstr "Avant-plan dans le temps d'inactivité"
 
-#: src/contents/ui/config/ConfigAppearance.qml:69
-#: src/contents/ui/config/ConfigAppearance.qml:153
+#: src/contents/ui/config/ConfigAppearance.qml:86
+#: src/contents/ui/config/ConfigAppearance.qml:170
 #, kde-format
 msgid "Height multiplier"
 msgstr "Multiplicateur de taille"
 
-#: src/contents/ui/config/ConfigAppearance.qml:87
+#: src/contents/ui/config/ConfigAppearance.qml:104
 #, kde-format
 msgid "Display label"
 msgstr "Afficher le nom"
 
-#: src/contents/ui/config/ConfigAppearance.qml:102
+#: src/contents/ui/config/ConfigAppearance.qml:119
 #, kde-format
 msgid "Use custom font"
 msgstr "Utiliser une police personnalisée"
 
-#: src/contents/ui/config/ConfigAppearance.qml:117
+#: src/contents/ui/config/ConfigAppearance.qml:134
 #, kde-format
 msgid "Custom font..."
 msgstr "Police personnalisée…"
 
-#: src/contents/ui/config/ConfigAppearance.qml:131
+#: src/contents/ui/config/ConfigAppearance.qml:148
 #, kde-format
 msgid "Reset custom font to theme default."
 msgstr "Réinitialiser la police à la valeur du thème par défaut."
 
-#: src/contents/ui/config/ConfigAppearance.qml:148
+#: src/contents/ui/config/ConfigAppearance.qml:165
 #, kde-format
 msgid "Color"
 msgstr "Couleur"
 
-#: src/contents/ui/config/ConfigAppearance.qml:164
+#: src/contents/ui/config/ConfigAppearance.qml:181
 #, kde-format
 msgid "Misc"
 msgstr "Divers"
 
-#: src/contents/ui/config/ConfigAppearance.qml:174
+#: src/contents/ui/config/ConfigAppearance.qml:191
 #, kde-format
 msgid "Extra width per timer"
 msgstr "Largeur additionnelle entre minuteurs"
 
-#: src/contents/ui/config/ConfigAppearance.qml:183
+#: src/contents/ui/config/ConfigAppearance.qml:200
 #, kde-format
 msgid "Spacing between timers"
 msgstr "Espacement entre minuteurs"
 
-#: src/contents/ui/config/ConfigAppearance.qml:192
+#: src/contents/ui/config/ConfigAppearance.qml:209
 #, kde-format
 msgid "Use Workrave colors"
 msgstr "Utiliser les couleurs de Workrave"
 
-#: src/contents/ui/config/ConfigAppearance.qml:204
+#: src/contents/ui/config/ConfigAppearance.qml:221
 #, kde-format
 msgid "Use system theme colors"
 msgstr "Utiliser les couleurs du thème du système"
 
-#: src/contents/ui/config/ConfigTimers.qml:17
+#: src/contents/ui/config/ConfigTimers.qml:34
 #, kde-format
 msgid "Enable micro break timer"
 msgstr "Activer les minuteurs pour les petites pauses"
 
-#: src/contents/ui/config/ConfigTimers.qml:22
+#: src/contents/ui/config/ConfigTimers.qml:39
 #, kde-format
 msgid "Enable rest timer"
 msgstr "Activer les minuteurs de repos"
 
-#: src/contents/ui/config/ConfigTimers.qml:27
+#: src/contents/ui/config/ConfigTimers.qml:44
 #, kde-format
 msgid "Enable daily limit timer"
 msgstr "Activer les minuteurs de limite d'utilisation quotidienne"
 
-#: src/contents/ui/config/ConfigTimers.qml:32
+#: src/contents/ui/config/ConfigTimers.qml:49
 #, kde-format
 msgid "Detect Workrave configuration changes"
 msgstr "Détecter les changements de configuration de Workrave"
 
-#: src/contents/ui/config/ConfigTimers.qml:34
+#: src/contents/ui/config/ConfigTimers.qml:51
 #, kde-format
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
 msgid ""
 "Disable if performance is of concern, and you want to update it manually in "
 "context menu."
-msgstr "Désactiver si vous voulez mettre à jour les minuteurs manuellement à partir du menu contextuel de l'applet (plutôt qu'à chaque changement dans Workrave)."
+msgstr ""
+"Désactiver si vous voulez mettre à jour les minuteurs manuellement à partir "
+"du menu contextuel de l'applet (plutôt qu'à chaque changement dans Workrave)."
 
-#: src/contents/ui/config/ConfigTimers.qml:41
+#: src/contents/ui/config/ConfigTimers.qml:58
 #, kde-format
 msgid "Update interval in seconds"
 msgstr "Mettre à jour l'intervalle en secondes"
 
-#: src/contents/ui/config/ConfigTimers.qml:44
+#: src/contents/ui/config/ConfigTimers.qml:61
 #, kde-format
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
 msgid ""
 "Set higher if performance is of concern, and you don't need frequent timer "
 "readings."
-msgstr "Désactiver si vous n'avez pas besoin que les minuteurs se rafraîchissent toutes les secondes mais à l'intervalle défini."
+msgstr ""
+"Désactiver si vous n'avez pas besoin que les minuteurs se rafraîchissent "
+"toutes les secondes mais à l'intervalle défini."
 
-#: src/contents/ui/main.qml:272
+#: src/contents/ui/main.qml:289
 #, kde-format
 msgid "Reload Workrave configuration"
 msgstr "Recharger la configuration de Workrave"
 
-#: src/contents/ui/main.qml:273
+#: src/contents/ui/main.qml:290
 #, kde-format
 msgid "Recalculate applet size"
 msgstr "Recalculer la taille de l'applet"
 
-#: src/contents/ui/main.qml:284
+#: src/contents/ui/main.qml:301
 #, kde-format
 msgid "Workrave not installed"
 msgstr "Workrave non installé"
 
-#: src/contents/ui/main.qml:285
+#: src/contents/ui/main.qml:302
 #, kde-format
 msgid "Please install Workrave."
 msgstr "Veuillez installer Workrave."
 
-#: src/contents/ui/main.qml:336
+#: src/contents/ui/main.qml:353
 #, kde-format
 msgid "No Workrave timers added"
 msgstr "Aucun minuteur Workrave ajouté"
 
-#: src/contents/ui/main.qml:337
+#: src/contents/ui/main.qml:354
 #, kde-format
 msgid "Please add a timer in applet settings."
 msgstr "Veuillez ajouter un minuteur dans la configuration de l'applet"
