@@ -8,7 +8,6 @@ cd utils
 extract_messages_script="scripts/extract-messages.sh"
 if [ ! -f $extract_messages_script ]; then
   svn checkout svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/scripts
-  echo "brak"
 fi
 
 cd $root_dir
@@ -23,6 +22,6 @@ cd $root_dir
 for language_code in ${language_codes[@]}; do
   mo_directory="./src/contents/locale/$language_code/LC_MESSAGES"
   po_directory="./po/$language_code"
-  mkdir -p cd ./src/contents/locale/$language_code/LC_MESSAGES
+  mkdir -p ./src/contents/locale/$language_code/LC_MESSAGES
   msgfmt --no-hash -o $mo_directory/$msg_basename.mo $po_directory/$msg_basename.po
 done
