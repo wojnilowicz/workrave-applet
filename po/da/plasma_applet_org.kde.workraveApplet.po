@@ -1,0 +1,195 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the workrave-applet package.
+#
+# Martin Schlander <mschlander@opensuse.org>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: workrave-applet\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"PO-Revision-Date: 2020-07-07 18:05+0200\n"
+"Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
+"Language-Team: Danish <kde-i18n-doc@kde.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#: src/contents/config/config.qml:23
+#, kde-format
+msgid "Timers"
+msgstr "Timere"
+
+#: src/contents/config/config.qml:29
+#, kde-format
+msgid "Appearance"
+msgstr "Udseende"
+
+#: src/contents/ui/config/ConfigAppearance.qml:47
+#, kde-format
+msgid "Display progress bar"
+msgstr "Vis fremgangslinje"
+
+#: src/contents/ui/config/ConfigAppearance.qml:60
+#, kde-format
+msgid "Background in normal state"
+msgstr "Baggrund i normaltilstand"
+
+#: src/contents/ui/config/ConfigAppearance.qml:65
+#, kde-format
+msgid "Background in overdue state"
+msgstr "Baggrund i overskredet tilstand"
+
+#: src/contents/ui/config/ConfigAppearance.qml:70
+#, kde-format
+msgid "Foreground in activity state"
+msgstr "Forgrund i aktivitetstilstand"
+
+#: src/contents/ui/config/ConfigAppearance.qml:75
+#, kde-format
+msgid "Foreground at idle time in elapsed time"
+msgstr "Forgrund ved inaktiv tid i gået tid"
+
+#: src/contents/ui/config/ConfigAppearance.qml:80
+#, kde-format
+msgid "Foreground at idle time"
+msgstr "Forgrund ved inaktiv tid"
+
+#: src/contents/ui/config/ConfigAppearance.qml:86
+#: src/contents/ui/config/ConfigAppearance.qml:170
+#, kde-format
+msgid "Height multiplier"
+msgstr "Højdemultiplikator"
+
+#: src/contents/ui/config/ConfigAppearance.qml:104
+#, kde-format
+msgid "Display label"
+msgstr "Vis etiket"
+
+#: src/contents/ui/config/ConfigAppearance.qml:119
+#, kde-format
+msgid "Use custom font"
+msgstr "Brug brugerdefineret skrifttype"
+
+#: src/contents/ui/config/ConfigAppearance.qml:134
+#, kde-format
+msgid "Custom font..."
+msgstr "Brugerdefineret skrifttype..."
+
+#: src/contents/ui/config/ConfigAppearance.qml:148
+#, kde-format
+msgid "Reset custom font to theme default."
+msgstr "Nulstil brugerdefineret skrifttype til temaets standard."
+
+#: src/contents/ui/config/ConfigAppearance.qml:165
+#, kde-format
+msgid "Color"
+msgstr "Farve"
+
+#: src/contents/ui/config/ConfigAppearance.qml:181
+#, kde-format
+msgid "Misc"
+msgstr "Diverse"
+
+#: src/contents/ui/config/ConfigAppearance.qml:191
+#, kde-format
+msgid "Extra width per timer"
+msgstr "Ekstra bredde pr. timer"
+
+#: src/contents/ui/config/ConfigAppearance.qml:200
+#, kde-format
+msgid "Spacing between timers"
+msgstr "Afstand mellem timere"
+
+#: src/contents/ui/config/ConfigAppearance.qml:209
+#, kde-format
+msgid "Use Workrave colors"
+msgstr "Brug Workrave-farver"
+
+#: src/contents/ui/config/ConfigAppearance.qml:221
+#, kde-format
+msgid "Use system theme colors"
+msgstr "Brug systemets temafarver"
+
+#: src/contents/ui/config/ConfigTimers.qml:34
+#, kde-format
+msgid "Enable micro break timer"
+msgstr "Aktivér timer til mikropauser"
+
+#: src/contents/ui/config/ConfigTimers.qml:39
+#, kde-format
+msgid "Enable rest timer"
+msgstr "Aktivér hviletimer"
+
+#: src/contents/ui/config/ConfigTimers.qml:44
+#, kde-format
+msgid "Enable daily limit timer"
+msgstr "Aktivér timer for daglig grænse"
+
+#: src/contents/ui/config/ConfigTimers.qml:49
+#, kde-format
+msgid "Detect Workrave configuration changes"
+msgstr "Detektér ændringer af Workrave-konfigurationen"
+
+#: src/contents/ui/config/ConfigTimers.qml:51
+#, kde-format
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr ""
+"Deaktivér hvis computerens ydelse er begrænset, og hvis du vil opdatere det"
+" manuelt "
+"i kontekstmenuen."
+
+#: src/contents/ui/config/ConfigTimers.qml:58
+#, kde-format
+msgid "Update interval in seconds"
+msgstr "Opdateringsinterval i sekunder"
+
+#: src/contents/ui/config/ConfigTimers.qml:61
+#, kde-format
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr ""
+"Angiv højere hvis computerens ydelse er begrænset, og du ikke har brug for "
+"hyppige timer-aflæsninger."
+
+#: src/contents/ui/main.qml:289
+#, kde-format
+msgid "Reload Workrave configuration"
+msgstr "Genindlæs Workrave-konfiguration"
+
+#: src/contents/ui/main.qml:290
+#, kde-format
+msgid "Recalculate applet size"
+msgstr "Genberegn applet-størrelse"
+
+#: src/contents/ui/main.qml:301
+#, kde-format
+msgid "Workrave not installed"
+msgstr "Workrave er ikke installeret"
+
+#: src/contents/ui/main.qml:302
+#, kde-format
+msgid "Please install Workrave."
+msgstr "Installér venligst Workrave"
+
+#: src/contents/ui/main.qml:353
+#, kde-format
+msgid "No Workrave timers added"
+msgstr "Ingen Workrave-timere tilføjet"
+
+#: src/contents/ui/main.qml:354
+#, kde-format
+msgid "Please add a timer in applet settings."
+msgstr "Tilføj venligt en timer i applet-indstillingerne."
