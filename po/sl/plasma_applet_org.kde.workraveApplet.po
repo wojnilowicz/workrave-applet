@@ -1,0 +1,195 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the workrave-applet package.
+#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: workrave-applet\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"PO-Revision-Date: 2020-07-08 12:56+0200\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"Language: sl\n"
+
+#: src/contents/config/config.qml:23
+#, kde-format
+msgid "Timers"
+msgstr "Merilniki časa"
+
+#: src/contents/config/config.qml:29
+#, kde-format
+msgid "Appearance"
+msgstr "Videz"
+
+#: src/contents/ui/config/ConfigAppearance.qml:47
+#, kde-format
+msgid "Display progress bar"
+msgstr "Prikaži letvico napredka"
+
+#: src/contents/ui/config/ConfigAppearance.qml:60
+#, kde-format
+msgid "Background in normal state"
+msgstr "Ozadje v normalnem stanju"
+
+#: src/contents/ui/config/ConfigAppearance.qml:65
+#, kde-format
+msgid "Background in overdue state"
+msgstr "Ozadje v zaostalem stanju"
+
+#: src/contents/ui/config/ConfigAppearance.qml:70
+#, kde-format
+msgid "Foreground in activity state"
+msgstr "Ospredje v dejavnem stanju"
+
+#: src/contents/ui/config/ConfigAppearance.qml:75
+#, kde-format
+msgid "Foreground at idle time in elapsed time"
+msgstr "Ospredje pri prostem času v pretečenem času"
+
+#: src/contents/ui/config/ConfigAppearance.qml:80
+#, kde-format
+msgid "Foreground at idle time"
+msgstr "Ospredje pri prostem času"
+
+#: src/contents/ui/config/ConfigAppearance.qml:86
+#: src/contents/ui/config/ConfigAppearance.qml:170
+#, kde-format
+msgid "Height multiplier"
+msgstr "Multiplikator višine"
+
+#: src/contents/ui/config/ConfigAppearance.qml:104
+#, kde-format
+msgid "Display label"
+msgstr "Prikaži oznako"
+
+#: src/contents/ui/config/ConfigAppearance.qml:119
+#, kde-format
+msgid "Use custom font"
+msgstr "Uporabi pisavo po meri"
+
+#: src/contents/ui/config/ConfigAppearance.qml:134
+#, kde-format
+msgid "Custom font..."
+msgstr "Pisava po meri..."
+
+#: src/contents/ui/config/ConfigAppearance.qml:148
+#, kde-format
+msgid "Reset custom font to theme default."
+msgstr "Ponovno nastavi pisavo po meri na privzeto obliko."
+
+#: src/contents/ui/config/ConfigAppearance.qml:165
+#, kde-format
+msgid "Color"
+msgstr "Barva"
+
+#: src/contents/ui/config/ConfigAppearance.qml:181
+#, kde-format
+msgid "Misc"
+msgstr "Razno"
+
+#: src/contents/ui/config/ConfigAppearance.qml:191
+#, kde-format
+msgid "Extra width per timer"
+msgstr "Posebna širina za merilnik časa"
+
+#: src/contents/ui/config/ConfigAppearance.qml:200
+#, kde-format
+msgid "Spacing between timers"
+msgstr "Oddaljenost med merilniki časa"
+
+#: src/contents/ui/config/ConfigAppearance.qml:209
+#, kde-format
+msgid "Use Workrave colors"
+msgstr "Uporabi barve Workrave"
+
+#: src/contents/ui/config/ConfigAppearance.qml:221
+#, kde-format
+msgid "Use system theme colors"
+msgstr "Uporabi barve sistemske teme"
+
+#: src/contents/ui/config/ConfigTimers.qml:34
+#, kde-format
+msgid "Enable micro break timer"
+msgstr "Omogoči mikro prekinjevalnik merilnika časa"
+
+#: src/contents/ui/config/ConfigTimers.qml:39
+#, kde-format
+msgid "Enable rest timer"
+msgstr "Omogoči merilnik oddiha"
+
+#: src/contents/ui/config/ConfigTimers.qml:44
+#, kde-format
+msgid "Enable daily limit timer"
+msgstr "Omogoči merilnik dnevne omejitve"
+
+#: src/contents/ui/config/ConfigTimers.qml:49
+#, kde-format
+msgid "Detect Workrave configuration changes"
+msgstr "Zaznajte spremembe nastavitev Workrave"
+
+#: src/contents/ui/config/ConfigTimers.qml:51
+#, kde-format
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr ""
+"Onemogočite, če vas skrbi zmogljivost, in ga želite ročno posodobiti v "
+"kontekstnem meniju."
+
+#: src/contents/ui/config/ConfigTimers.qml:58
+#, kde-format
+msgid "Update interval in seconds"
+msgstr "Interval posodobitev v sekundah"
+
+#: src/contents/ui/config/ConfigTimers.qml:61
+#, kde-format
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr ""
+"Nastavite višje, če vas skrbi zmogljivost in ne potrebujete pogosto odčitkov "
+"merilnika časa."
+
+#: src/contents/ui/main.qml:289
+#, kde-format
+msgid "Reload Workrave configuration"
+msgstr "Ponovno naloži nastavitve Workrave"
+
+#: src/contents/ui/main.qml:290
+#, kde-format
+msgid "Recalculate applet size"
+msgstr "Ponovno izračunaj velikost appleta"
+
+#: src/contents/ui/main.qml:301
+#, kde-format
+msgid "Workrave not installed"
+msgstr "Workrave ni nameščen"
+
+#: src/contents/ui/main.qml:302
+#, kde-format
+msgid "Please install Workrave."
+msgstr "Namestite Workrave."
+
+#: src/contents/ui/main.qml:353
+#, kde-format
+msgid "No Workrave timers added"
+msgstr "Ni dodanih merilnikov časa Workrave"
+
+#: src/contents/ui/main.qml:354
+#, kde-format
+msgid "Please add a timer in applet settings."
+msgstr "Dodajte merilnik časa v nastavitvah appleta."
