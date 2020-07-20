@@ -1,0 +1,194 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the workrave-applet package.
+#
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: workrave-applet\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"PO-Revision-Date: 2020-07-19 16:09+0200\n"
+"Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.04.1\n"
+
+#: src/contents/config/config.qml:23
+#, kde-format
+msgid "Timers"
+msgstr "Timer"
+
+#: src/contents/config/config.qml:29
+#, kde-format
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: src/contents/ui/config/ConfigAppearance.qml:47
+#, kde-format
+msgid "Display progress bar"
+msgstr "Mostra barra di avanzamento"
+
+#: src/contents/ui/config/ConfigAppearance.qml:60
+#, kde-format
+msgid "Background in normal state"
+msgstr "Sfondo in condizioni normali"
+
+#: src/contents/ui/config/ConfigAppearance.qml:65
+#, kde-format
+msgid "Background in overdue state"
+msgstr "Sfondo in caso di tempo scaduto"
+
+#: src/contents/ui/config/ConfigAppearance.qml:70
+#, kde-format
+msgid "Foreground in activity state"
+msgstr "Primo piano in caso di attività"
+
+#: src/contents/ui/config/ConfigAppearance.qml:75
+#, kde-format
+msgid "Foreground at idle time in elapsed time"
+msgstr "Primo piano in caso di inattività a tempo scaduto"
+
+#: src/contents/ui/config/ConfigAppearance.qml:80
+#, kde-format
+msgid "Foreground at idle time"
+msgstr "Primo piano in caso di inattività"
+
+#: src/contents/ui/config/ConfigAppearance.qml:86
+#: src/contents/ui/config/ConfigAppearance.qml:170
+#, kde-format
+msgid "Height multiplier"
+msgstr "Moltiplicatore di altezza"
+
+#: src/contents/ui/config/ConfigAppearance.qml:104
+#, kde-format
+msgid "Display label"
+msgstr "Mostra etichetta"
+
+#: src/contents/ui/config/ConfigAppearance.qml:119
+#, kde-format
+msgid "Use custom font"
+msgstr "Usa carattere personalizzato"
+
+#: src/contents/ui/config/ConfigAppearance.qml:134
+#, kde-format
+msgid "Custom font..."
+msgstr "Carattere personalizzato..."
+
+#: src/contents/ui/config/ConfigAppearance.qml:148
+#, kde-format
+msgid "Reset custom font to theme default."
+msgstr "Ripristina il carattere personalizzato a quello predefinito del tema."
+
+#: src/contents/ui/config/ConfigAppearance.qml:165
+#, kde-format
+msgid "Color"
+msgstr "Colore"
+
+#: src/contents/ui/config/ConfigAppearance.qml:181
+#, kde-format
+msgid "Misc"
+msgstr "Varie"
+
+#: src/contents/ui/config/ConfigAppearance.qml:191
+#, kde-format
+msgid "Extra width per timer"
+msgstr "Ulteriore altezza per timer"
+
+#: src/contents/ui/config/ConfigAppearance.qml:200
+#, kde-format
+msgid "Spacing between timers"
+msgstr "Spaziatura tra i timer"
+
+#: src/contents/ui/config/ConfigAppearance.qml:209
+#, kde-format
+msgid "Use Workrave colors"
+msgstr "Usa i colori di Workrave"
+
+#: src/contents/ui/config/ConfigAppearance.qml:221
+#, kde-format
+msgid "Use system theme colors"
+msgstr "Usa i colori del tema di sistema"
+
+#: src/contents/ui/config/ConfigTimers.qml:34
+#, kde-format
+msgid "Enable micro break timer"
+msgstr "Abilita il timer per le micro-pause"
+
+#: src/contents/ui/config/ConfigTimers.qml:39
+#, kde-format
+msgid "Enable rest timer"
+msgstr "Abilita il timer per il riposo"
+
+#: src/contents/ui/config/ConfigTimers.qml:44
+#, kde-format
+msgid "Enable daily limit timer"
+msgstr "Abilita il timer per il limita giornaliero"
+
+#: src/contents/ui/config/ConfigTimers.qml:49
+#, kde-format
+msgid "Detect Workrave configuration changes"
+msgstr "Rileva le modifiche alla configurazione di Workrave"
+
+#: src/contents/ui/config/ConfigTimers.qml:51
+#, kde-format
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr ""
+"Disabilita se le prestazioni sono importanti, e vuoi aggiornare tali valori "
+"manualmente dal menu contestuale"
+
+#: src/contents/ui/config/ConfigTimers.qml:58
+#, kde-format
+msgid "Update interval in seconds"
+msgstr "Intervallo di aggiornamento in secondi"
+
+#: src/contents/ui/config/ConfigTimers.qml:61
+#, kde-format
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr ""
+"Imposta un valore maggiore se le prestazioni sono importanti, e non hai "
+"bisogno di controllare frequentemente i valori dei timer."
+
+#: src/contents/ui/main.qml:289
+#, kde-format
+msgid "Reload Workrave configuration"
+msgstr "Ricarica la configurazione di Workrave"
+
+#: src/contents/ui/main.qml:290
+#, kde-format
+msgid "Recalculate applet size"
+msgstr "Ricalcola la dimensione dell'applet"
+
+#: src/contents/ui/main.qml:301
+#, kde-format
+msgid "Workrave not installed"
+msgstr "Workrave non è installato"
+
+#: src/contents/ui/main.qml:302
+#, kde-format
+msgid "Please install Workrave."
+msgstr "Installa Workrave."
+
+#: src/contents/ui/main.qml:353
+#, kde-format
+msgid "No Workrave timers added"
+msgstr "Nessun timer di Workrave aggiunto"
+
+#: src/contents/ui/main.qml:354
+#, kde-format
+msgid "Please add a timer in applet settings."
+msgstr "Aggiungi un timer dalle impostazioni dell'applet."
