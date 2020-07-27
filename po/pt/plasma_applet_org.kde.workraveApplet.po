@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: workrave-applet\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"PO-Revision-Date: 2020-07-25 10:29+0100\n"
+"Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-POFile-SpellExtra: Workrave\n"
+
+#: src/contents/config/config.qml:23
+#, kde-format
+msgid "Timers"
+msgstr "Temporizadores"
+
+#: src/contents/config/config.qml:29
+#, kde-format
+msgid "Appearance"
+msgstr "Aparência"
+
+#: src/contents/ui/config/ConfigAppearance.qml:47
+#, kde-format
+msgid "Display progress bar"
+msgstr "Mostrar uma barra de progresso"
+
+#: src/contents/ui/config/ConfigAppearance.qml:60
+#, kde-format
+msgid "Background in normal state"
+msgstr "Fundo no estado normal"
+
+#: src/contents/ui/config/ConfigAppearance.qml:65
+#, kde-format
+msgid "Background in overdue state"
+msgstr "Fundo no estado atrasado"
+
+#: src/contents/ui/config/ConfigAppearance.qml:70
+#, kde-format
+msgid "Foreground in activity state"
+msgstr "Cor principal no estado de actividade"
+
+#: src/contents/ui/config/ConfigAppearance.qml:75
+#, kde-format
+msgid "Foreground at idle time in elapsed time"
+msgstr "Cor principal no tempo inactivo do tempo decorrido"
+
+#: src/contents/ui/config/ConfigAppearance.qml:80
+#, kde-format
+msgid "Foreground at idle time"
+msgstr "Cor principal no tempo inactivo"
+
+#: src/contents/ui/config/ConfigAppearance.qml:86
+#: src/contents/ui/config/ConfigAppearance.qml:170
+#, kde-format
+msgid "Height multiplier"
+msgstr "Multiplicador da altura"
+
+#: src/contents/ui/config/ConfigAppearance.qml:104
+#, kde-format
+msgid "Display label"
+msgstr "Mostrar uma legenda"
+
+#: src/contents/ui/config/ConfigAppearance.qml:119
+#, kde-format
+msgid "Use custom font"
+msgstr "Usar um tipo de letra personalizado"
+
+#: src/contents/ui/config/ConfigAppearance.qml:134
+#, kde-format
+msgid "Custom font..."
+msgstr "Tipo de letra personalizado..."
+
+#: src/contents/ui/config/ConfigAppearance.qml:148
+#, kde-format
+msgid "Reset custom font to theme default."
+msgstr "Repor o tipo de letra com a predefinição do tema."
+
+#: src/contents/ui/config/ConfigAppearance.qml:165
+#, kde-format
+msgid "Color"
+msgstr "Cor"
+
+#: src/contents/ui/config/ConfigAppearance.qml:181
+#, kde-format
+msgid "Misc"
+msgstr "Diversos"
+
+#: src/contents/ui/config/ConfigAppearance.qml:191
+#, kde-format
+msgid "Extra width per timer"
+msgstr "Largura extra por temporizador"
+
+#: src/contents/ui/config/ConfigAppearance.qml:200
+#, kde-format
+msgid "Spacing between timers"
+msgstr "Espaço entre temporizadores"
+
+#: src/contents/ui/config/ConfigAppearance.qml:209
+#, kde-format
+msgid "Use Workrave colors"
+msgstr "Usar as cores do Workrave"
+
+#: src/contents/ui/config/ConfigAppearance.qml:221
+#, kde-format
+msgid "Use system theme colors"
+msgstr "Usar as cores do tema do sistema"
+
+#: src/contents/ui/config/ConfigTimers.qml:34
+#, kde-format
+msgid "Enable micro break timer"
+msgstr "Activar o temporizador de micro-pausas"
+
+#: src/contents/ui/config/ConfigTimers.qml:39
+#, kde-format
+msgid "Enable rest timer"
+msgstr "Activar o temporizador de descanso"
+
+#: src/contents/ui/config/ConfigTimers.qml:44
+#, kde-format
+msgid "Enable daily limit timer"
+msgstr "Activar o temporizador do limite diário"
+
+#: src/contents/ui/config/ConfigTimers.qml:49
+#, kde-format
+msgid "Detect Workrave configuration changes"
+msgstr "Detectar mudanças na configuração do Workrave"
+
+#: src/contents/ui/config/ConfigTimers.qml:51
+#, kde-format
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr "Desactive se a performance for preocupante e se o quiser actualizar manualmente no menu de contexto."
+
+#: src/contents/ui/config/ConfigTimers.qml:58
+#, kde-format
+msgid "Update interval in seconds"
+msgstr "Intervalo de actualização em segundos"
+
+#: src/contents/ui/config/ConfigTimers.qml:61
+#, kde-format
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr "Aumente o valor se a performance for preocupante e caso não precise de leituras frequentes do temporizador."
+
+#: src/contents/ui/main.qml:289
+#, kde-format
+msgid "Reload Workrave configuration"
+msgstr "Recarregar a configuração do Workrave"
+
+#: src/contents/ui/main.qml:290
+#, kde-format
+msgid "Recalculate applet size"
+msgstr "Calcular o tamanho do elemento"
+
+#: src/contents/ui/main.qml:301
+#, kde-format
+msgid "Workrave not installed"
+msgstr "O Workrave não está instalado"
+
+#: src/contents/ui/main.qml:302
+#, kde-format
+msgid "Please install Workrave."
+msgstr "Por favor instale o Workrave."
+
+#: src/contents/ui/main.qml:353
+#, kde-format
+msgid "No Workrave timers added"
+msgstr "Sem temporizadores do Workrave adicionados"
+
+#: src/contents/ui/main.qml:354
+#, kde-format
+msgid "Please add a timer in applet settings."
+msgstr "Por favor adicione um temporizador na configuração do elemento."
