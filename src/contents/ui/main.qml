@@ -42,6 +42,7 @@ Item {
   }
 
   property var updateIntervalInMilliseconds: plasmoid.configuration.updateInterval * 1000
+  property bool isKF5_5_70_0: false
 
   property bool isWorkraveInstalled: false
 
@@ -216,7 +217,8 @@ Item {
         }
       }
 
-      interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
+      if (!isKF5_5_70_0)
+        interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
 
       if (isValueUnchanged)
         return
@@ -276,9 +278,12 @@ Item {
   PlasmaCore.DataSource {
     id: workraveCheckDBus
     engine: 'executable'
-    interval: 1
+    interval: 0
     connectedSources: ["qdbus org.workrave.Workrave"]
     onNewData: {
+      if (!interval)
+        return
+
       if (data.stdout.length) {
         isWorkraveInstalled = true
         workraveDataDBus.interval = updateIntervalInMilliseconds
@@ -288,8 +293,11 @@ Item {
         plasmoid.userConfiguringChanged.connect(userConfiguringChanged)
         plasmoid.setAction('reloadWorkraveConfiguration', i18n("Reload Workrave configuration"), 'view-refresh');
         plasmoid.setAction('adjustSize', i18n("Recalculate applet size"), 'zoom-fit-width');
-        interval = 0
 
+        if (isKF5_5_70_0)
+          interval = 36000
+        else
+          interval = 0
       } else {
         isWorkraveInstalled = false
         interval = 1000
@@ -305,6 +313,26 @@ Item {
 
     }
 
+  }
+
+  PlasmaCore.DataSource {
+    id: kdeFrameworksCheck
+    engine: 'executable'
+    interval: 0
+    connectedSources: ["kf5-config --kde-version"]
+    onNewData: {
+      let kf5version = data.stdout.trim()
+      switch (kf5version) {
+        case "5.70.0":
+          isKF5_5_70_0 = true
+          console.warn("Running on buggy KF5 5.70.0. Expect deficiencies due to https://bugs.kde.org/show_bug.cgi?id=422973")
+          break
+        default:
+          break;
+      }
+      workraveCheckDBus.interval = 1
+
+    }
   }
 
   Component.onCompleted: {
