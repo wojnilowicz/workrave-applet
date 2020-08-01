@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./update-mo-files.sh
+
 cd ..
 root_dir=$(pwd)
 
