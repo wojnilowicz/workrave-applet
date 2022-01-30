@@ -295,8 +295,18 @@ Item {
 
         placeholderIcon.visible = true
         placeholderTooltip.visible = true
-        placeholderTooltip.mainText = i18n("Workrave not installed")
-        placeholderTooltip.subText = i18n("Please install Workrave.")
+        let mainText = ""
+        let subText = ""
+        if (data.stderr.includes("qdbus")) {
+          mainText = i18n("Issue with qdbus")
+          subText = i18n("Please make sure that the command `qdbus org.workrave.Workrave` works without issues in your terminal.")
+        } else {
+          mainText = i18n("Workrave not installed")
+          subText = i18n("Please install Workrave.")
+        }
+
+        placeholderTooltip.mainText = mainText
+        placeholderTooltip.subText = subText
 
       }
 
