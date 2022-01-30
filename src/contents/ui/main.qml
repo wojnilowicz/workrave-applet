@@ -30,150 +30,420 @@ Item {
     "dailylimit" : "daily_limit"
   }
 
-  property var updateIntervalInMilliseconds: plasmoid.configuration.updateInterval * 1000
+  property var largeIconFileNamesFromTimerNames : {
+    "microbreak" : "../images/timer-micro-break-large.png",
+    "restbreak" : "../images/timer-rest-break-large.png",
+    "dailylimit" : "../images/timer-daily-large.png"
+  }
+
+  property int periodicalSwitchInterval: plasmoid.configuration.periodicalSwitchInterval
+  property int updateInterval: plasmoid.configuration.updateInterval
+  onPeriodicalSwitchIntervalChanged: updatePlasmoidAfterConfiguration()
+  onUpdateIntervalChanged: updatePlasmoidAfterConfiguration()
+
+  property int switchIntervalInMilliseconds: plasmoid.configuration.periodicalSwitchInterval * 1000
+  property int updateIntervalInMilliseconds: plasmoid.configuration.updateInterval * 1000
+
+  property bool microTimerEnabled: plasmoid.configuration.microTimer
+  property bool restTimerEnabled: plasmoid.configuration.restTimer
+  property bool dailyTimerEnabled: plasmoid.configuration.dailyTimer
+  onMicroTimerEnabledChanged: updatePlasmoidAfterConfiguration()
+  onRestTimerEnabledChanged: updatePlasmoidAfterConfiguration()
+  onDailyTimerEnabledChanged: updatePlasmoidAfterConfiguration()
+
+  property int timersOrientationMode: plasmoid.configuration.timersOrientation
+  property bool singleTimerModeEnabled: plasmoid.configuration.singleTimerMode
+  property bool periodicalSwitchEnabled: plasmoid.configuration.periodicalSwitch
+  property bool conditionalSwitchEnabled: plasmoid.configuration.conditionalSwitch
+  property bool timeDifferenceSwitchEnabled: plasmoid.configuration.timeDifferenceSwitch
+  onTimersOrientationModeChanged: updatePlasmoidAfterConfiguration()
+  onSingleTimerModeEnabledChanged: updatePlasmoidAfterConfiguration()
+  onPeriodicalSwitchEnabledChanged: updatePlasmoidAfterConfiguration()
+  onConditionalSwitchEnabledChanged: updatePlasmoidAfterConfiguration()
+  onTimeDifferenceSwitchEnabledChanged: updatePlasmoidAfterConfiguration()
+
+  property bool detectWorkraveConfigurationChanges: plasmoid.configuration.detectWorkraveConfigurationChanges
+  onDetectWorkraveConfigurationChanges: updatePlasmoidAfterConfiguration()
+
+  property bool useCustomFont: plasmoid.configuration.useCustomFont
+  property var customFont: plasmoid.configuration.customFont
+  onUseCustomFontChanged: updatePlasmoidAfterConfiguration()
+  onCustomFontChanged: updatePlasmoidAfterConfiguration()
+
+  property bool timersExtraWidth: plasmoid.configuration.timersExtraWidth
+  property bool timersExtraHeight: plasmoid.configuration.timersExtraHeight
+  property bool timersSpacing: plasmoid.configuration.timersSpacing
+  onTimersExtraWidthChanged: updatePlasmoidAfterConfiguration()
+  onTimersExtraHeightChanged: updatePlasmoidAfterConfiguration()
+  onTimersSpacingChanged: updatePlasmoidAfterConfiguration()
+
   property bool isKF5_5_70_0: false
 
   property bool isWorkraveInstalled: false
+  property int widgetWidth : 0
+  property int widgetHeight : 0
+  property int widgetContentWidth : 0
+  property int widgetContentHeight : 0
 
-  property var sizeConfiguration: plasmoid.configuration.timersExtraWidth | plasmoid.configuration.fontHeightMultiplier | plasmoid.configuration.timersSpacing
-  onSizeConfigurationChanged: slotSizeConfigurationChanged()
+  Layout.minimumWidth: widgetWidth
+  Layout.minimumHeight: widgetHeight
 
-  property var timersConfiguration: plasmoid.configuration.microTimer | plasmoid.configuration.restTimer | plasmoid.configuration.dailyTimer
-  onTimersConfigurationChanged: slotTimersConfigurationChanged()
+  property bool verticalOrientation: {
+    switch (plasmoid.configuration.timersOrientation) {
+    case 1: // horizontal
+      return false
+    case 2: // vertical
+      return true
+    default: // auto
+      let isVertical = false
 
-  property var fontConfiguration: plasmoid.configuration.useCustomFont | plasmoid.configuration.customFont | plasmoid.configuration.fontHeightMultiplier
-  onFontConfigurationChanged: slotFontConfigurationChanged()
-
-  property var dataSourceConfiguration : plasmoid.configuration.detectWorkraveConfigurationChanges | plasmoid.configuration.updateInterval
-  onDataSourceConfigurationChanged: slotDataSourceConfigurationChanged()
-
-
-  function slotSizeConfigurationChanged() {
-    if (isWorkraveInstalled)
-      action_adjustSize()
+      switch (plasmoid.formFactor) {
+      case PlasmaCore.Types.Vertical:
+        return true
+      default:
+        switch (plasmoid.location) {
+        case PlasmaCore.Types.LeftEdge:
+        case PlasmaCore.Types.RightEdge:
+          return true
+        default:
+          return false
+        }
+      }
+    }
   }
 
-  function slotTimersConfigurationChanged() {
-    if (isWorkraveInstalled)
-      reloadAppletTimers()
+  Connections {
+    target: plasmoid
+    onUserConfiguringChanged: {
+      updatePlasmoidAfterConfiguration()
+    }
+
+    onLocationChanged: {
+      updatePlasmoidAfterConfiguration()
+    }
+
+    onFormFactorChanged: {
+      updatePlasmoidAfterConfiguration()
+    }
   }
 
-  function slotFontConfigurationChanged() {
-    if (!plasmoid.configuration.useCustomFont)
-      textMetrics.font = theme.defaultFont
-    else
-      textMetrics.font = plasmoid.configuration.customFont
-    textMetrics.font.pointSize = textMetrics.font.pointSize * plasmoid.configuration.fontHeightMultiplier
-
+  function updatePlasmoidAfterConfiguration() {
     if (!isWorkraveInstalled)
       return
 
-    action_adjustSize()
-  }
-
-  function slotDataSourceConfigurationChanged() {
-    if (!isWorkraveInstalled)
-      return
+    if (!plasmoid.configuration.useCustomFont) {
+      dynamicTextMetrics.font = PlasmaCore.Theme.defaultFont
+      staticTextMetrics.font = PlasmaCore.Theme.defaultFont
+    } else {
+      dynamicTextMetrics.font = plasmoid.configuration.customFont
+      staticTextMetrics.font = plasmoid.configuration.customFont
+    }
 
     workraveConfigDBus.interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
     workraveDataDBus.interval = updateIntervalInMilliseconds
+
+    reloadAppletTimers()
+    action_adjustSize()
+
+    periodicalSwitchTimerController()
   }
 
-  property var widgetWidth : 0
+  function periodicalSwitchTimerController () {
+    let areAtLeastTwoTimersPresent = timersModel.count > 1 ? true : false
+    let isAnyTimerOverdue = false
+    for (let i = 0; i < timersModel.count; ++i) {
+      let timer = timersModel.get(i)
+      if (timer.elapsed >= timer.limit) {
+        isAnyTimerOverdue = true
+        break
+      }
+    }
 
-//   Layout.preferredWidth: widgetWidth
-  Layout.minimumWidth: widgetWidth
+    if (areAtLeastTwoTimersPresent &&
+        plasmoid.configuration.singleTimerMode &&
+        plasmoid.configuration.periodicalSwitch &&
+        // if time difference switch is disabled...
+        (!(plasmoid.configuration.conditionalSwitch && plasmoid.configuration.timeDifferenceSwitch) ||
+        // or it's enabled but no timer is overdue, so conditional switching musn't take control
+         !isAnyTimerOverdue))
+      periodicalSwitchTimer.running = true
+    else
+      periodicalSwitchTimer.running = false
+  }
 
   Timer {
-    id: adjustSizeTimer
-        interval: updateIntervalInMilliseconds
-        repeat: true
-        running: false
-        onTriggered: {
-          for (let i = 0; i < timersModel.count; ++i) {
-            let timer = timersModel.get(i)
-            if (timer.elapsed >= timer.limit)
-              break
-            this.running = false
-          }
-          action_adjustSize()
-        }
+    id: periodicalSwitchTimer
+    interval: switchIntervalInMilliseconds
+    repeat: true
+    running: false
+    onTriggered: {
+      listView.incrementCurrentIndex()
+      listView.switchWithAnimation(listView.currentIndex, ListView.Contain)
     }
+  }
+
+  property int indexToSwitchWithDelay: -1 // timer to switch to with some delay
+  Timer {
+    id: switchTimerWithDelay
+    interval: 0
+    repeat: false
+    running: false
+    onTriggered: {
+      listView.switchWithAnimation(indexToSwitchWithDelay, ListView.Contain)
+    }
+  }
+
+  property int previousVisibleIndex: -1 // timer that was displayed before triggering a condition
+  Timer {
+    id: conditionalSwitchTimer
+    interval: updateIntervalInMilliseconds
+    repeat: true
+    running: plasmoid.configuration.conditionalSwitch
+    onTriggered: {
+      if (plasmoid.configuration.timeDifferenceSwitch) {
+        let timerOffsetFromLimit = []
+        let isIdling = false
+        let leastResetDuration = 0
+        let indexOfLeastResetDuration = -1
+        let leastRemainingOffset = 0
+        let indexOfLeastRemainingOffset = -1
+        for (let i = 0; i < timersModel.count; ++i) {
+          let timer = timersModel.get(i)
+
+          let timeOffset = timer.limit - timer.elapsed
+          timerOffsetFromLimit[i] = timeOffset
+          if (timeOffset < leastRemainingOffset || indexOfLeastRemainingOffset == -1) {
+            leastRemainingOffset = timeOffset
+            indexOfLeastRemainingOffset = i
+          }
+
+          if (timer.idle)
+            isIdling = true
+
+          if (timeOffset < 0 &&
+              (leastResetDuration > timer.auto_reset || indexOfLeastResetDuration == -1)) {
+            leastResetDuration = timer.auto_reset
+            indexOfLeastResetDuration = i
+          }
+        }
+        // if the user isn't interacting then switch to a timer that'll reset the soonest
+        if (isIdling &&
+            indexOfLeastResetDuration != -1) {
+          if (listView.currentVisibleIndex() !== indexOfLeastResetDuration) {
+            listView.switchWithAnimation(indexOfLeastResetDuration, ListView.Contain)
+            indexToSwitchWithDelay = -1
+          }
+        } else if (leastRemainingOffset < plasmoid.configuration.timeDifferenceSwitchDifference) {
+          periodicalSwitchTimer.running = false
+          if (previousVisibleIndex == -1)
+            previousVisibleIndex = listView.currentIndex
+
+          if (listView.currentVisibleIndex() !== indexOfLeastRemainingOffset)  {
+            // timer with the least remaining offset has been already switched to but...
+            // the user switched it manually to some other timer for a while so...
+            // switch to it back after 5000 miliseconds
+            if (indexToSwitchWithDelay == indexOfLeastRemainingOffset) {
+              switchTimerWithDelay.interval = 5000
+            } else {
+              switchTimerWithDelay.interval = 0
+              indexToSwitchWithDelay = indexOfLeastRemainingOffset
+            }
+
+            switchTimerWithDelay.running = true
+          } else {
+            switchTimerWithDelay.running = false
+          }
+          // switch to a timer that was displayed before triggering a condition
+        } else if (previousVisibleIndex !== -1) {
+          listView.switchWithAnimation(previousVisibleIndex, ListView.Contain)
+          previousVisibleIndex = -1
+          periodicalSwitchTimerController()
+        }
+      }
+    }
+  }
 
   Component {
     id: timerComponent
-    Rectangle {
-      height: listView.height * plasmoid.configuration.progressBarHeightMultiplier
-      width: (listView.width - (listView.count - 1) * listView.spacing) * model.width_ratio
-      anchors.verticalCenter: parent.verticalCenter
-      color: "transparent"
+    RowLayout {
+      id: timerComponentBackground
+      spacing: 0
+      height: {
+        let referenceHeight = plasmoid.configuration.singleTimerMode ? listView.contentHeight : listView.height
+        if (verticalOrientation)
+          return (referenceHeight - (listView.spacing * (listView.count - 1))) * model.item_height_ratio
+        return referenceHeight
+      }
+      width: {
+        let referenceWidth = plasmoid.configuration.singleTimerMode ? listView.contentWidth : listView.width
+        if (verticalOrientation)
+          return referenceWidth
+        return (referenceWidth - (listView.spacing * (listView.count - 1))) * model.item_width_ratio
+      }
+
+      Image {
+        id: timerComponentIcon
+        fillMode: Image.PreserveAspectCrop
+        Layout.preferredWidth: Math.min(parent.width * model.icon_width_ratio, parent.height) * plasmoid.configuration.iconHeightPercentage / 100
+        Layout.preferredHeight: Math.min(parent.width * model.icon_width_ratio, parent.height) * plasmoid.configuration.iconHeightPercentage / 100
+        source: largeIconFileNamesFromTimerNames[model.id]
+        visible: plasmoid.configuration.iconEnabled
+      }
 
       Rectangle {
-        anchors.fill : parent
-        color : {
-          if (model.elapsed >= model.limit) {
-            adjustSizeTimer.running = true
-            return plasmoid.configuration.progressBarOverdueBackground
-          }
-          return plasmoid.configuration.progressBarNormalBackground
+        id : timerComponentData
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        Layout.maximumHeight: {
+          if (plasmoid.configuration.iconEnabled)
+            return Math.min(parent.width * model.icon_width_ratio, parent.height)
+          return -1
         }
-        visible: plasmoid.configuration.progressBarEnabled
-      }
 
-      Rectangle {
-        id : elapsedTimeProgress
-        height : parent.height
-        width : model.elapsed >= model.limit ? 0 : parent.width * model.elapsed / model.limit
-        color :  plasmoid.configuration.progressBarNormalForeground
-        visible: plasmoid.configuration.progressBarEnabled
-      }
+        MouseArea {
+          anchors.left: parent.left
+          anchors.top: parent.top
+          anchors.bottom: parent.bottom
+          width: parent.width / 2
+          onClicked: listView.decrementCurrentIndex()
+        }
 
-      Rectangle {
-        id : restInElapsedTimeProgress
-        height : parent.height
-        width : {
-          if (model.idle && model.elapsed < model.limit) {
-            if (model.idle <= model.auto_reset) {
-              return Math.min(parent.width * model.idle / model.auto_reset, elapsedTimeProgress.width)
+        MouseArea {
+          anchors.right: parent.right
+          anchors.top: parent.top
+          anchors.bottom: parent.bottom
+          width: parent.width / 2
+          onClicked: listView.incrementCurrentIndex()
+        }
+
+        color: "transparent"
+
+        Rectangle {
+          id : progressBarBackground
+          anchors.left: parent.left
+          anchors.right: parent.right
+          anchors.verticalCenter: parent.verticalCenter
+          height: parent.height * plasmoid.configuration.progressBarHeightPercentage / 100
+          color : {
+            if (model.elapsed >= model.limit) {
+              let currentLabelWidth = secondsLabel.text.length
+              if (currentLabelWidth < model.previous_label_width) {
+                model.previous_label_width = currentLabelWidth
+                action_adjustSize()
+              }
+              return plasmoid.configuration.progressBarOverdueBackground
             }
-            return elapsedTimeProgress.width
+            return plasmoid.configuration.progressBarNormalBackground
           }
-          return 0
-        }
-        color : plasmoid.configuration.progressBarRestingElapsedForeground
-        visible: plasmoid.configuration.progressBarEnabled
-      }
+          visible: plasmoid.configuration.progressBarEnabled
 
-      Rectangle {
-        id : restProgress
-        height : parent.height
-        anchors.left: restInElapsedTimeProgress.right
-        width : {
-          if (model.idle >= model.auto_reset && model.auto_reset)
-            return parent.width
-          return (parent.width * model.idle / model.auto_reset) - restInElapsedTimeProgress.width
-        }
-        color : plasmoid.configuration.progressBarRestingForeground
-        visible: plasmoid.configuration.progressBarEnabled
-      }
+          Rectangle {
+            id : elapsedTimeProgress
+            height : parent.height
+            width : model.elapsed >= model.limit ? 0 : parent.width * model.elapsed / model.limit
+            color :  plasmoid.configuration.progressBarNormalForeground
+          }
 
-      Label {
-        color: plasmoid.configuration.fontColor
-        anchors.centerIn: parent
-        font: textMetrics.font
-        text: secondsLeft(model)
-        visible: plasmoid.configuration.labelEnabled
+          Rectangle {
+            id : restInElapsedTimeProgress
+            height : parent.height
+            width : {
+              if (model.idle && model.elapsed < model.limit) {
+                if (model.idle <= model.auto_reset) {
+                  return Math.min(parent.width * model.idle / model.auto_reset, elapsedTimeProgress.width)
+                }
+                return elapsedTimeProgress.width
+              }
+              return 0
+            }
+            color : plasmoid.configuration.progressBarRestingElapsedForeground
+          }
+
+          Rectangle {
+            id : restProgress
+            height : parent.height
+            anchors.left: restInElapsedTimeProgress.right
+            width : {
+              if (model.idle >= model.auto_reset && model.auto_reset) {
+                let currentLabelWidth = secondsLabel.text.length
+                if (currentLabelWidth < model.previous_label_width) {
+                  model.previous_label_width = currentLabelWidth
+                  action_adjustSize()
+                }
+                return parent.width
+              }
+              return (parent.width * model.idle / model.auto_reset) - restInElapsedTimeProgress.width
+            }
+            color : plasmoid.configuration.progressBarRestingForeground
+          }
+        }
+
+        Label {
+          id: secondsLabel
+          color: plasmoid.configuration.fontColor
+          anchors.centerIn: parent
+          font: {
+            let fontHeightFromBarHeight = Math.floor(timerComponentData.height * model.font_height_ratio)
+            let fontHeightFromBarWidth = Math.floor(timerComponentData.width * model.font_width_ratio)
+            // calculated font size can be zero due to the progress bar having zero size at the begining
+            let fontHeightFromBar = Math.min(fontHeightFromBarHeight, fontHeightFromBarWidth)
+            if (!fontHeightFromBar)
+              fontHeightFromBar = staticTextMetrics.font.pointSize
+            dynamicTextMetrics.font.pointSize = fontHeightFromBar
+            return dynamicTextMetrics.font
+          }
+          text: formatSeconds(model.limit - model.elapsed)
+          visible: plasmoid.configuration.labelEnabled
+        }
       }
+    }
+  }
+
+  NumberAnimation {
+    id: switchingAnimation
+    target: listView
+    property: !verticalOrientation ? "contentX" : "contentY"
+    duration: {
+      let defaultAnimationDuration = 1000
+      if (switchIntervalInMilliseconds === 0)
+        return defaultAnimationDuration
+      Math.min (switchIntervalInMilliseconds * 0.5, defaultAnimationDuration)
     }
   }
 
   ListView {
     id: listView
-    anchors.fill : parent
+    anchors.verticalCenter: parent.verticalCenter
+    clip: plasmoid.configuration.singleTimerMode ? true : false
+    snapMode: ListView.SnapToItem
+    keyNavigationWraps: true
+    width: parent.width
+    height: Math.min(parent.height, parent.width * widgetHeight/widgetWidth)
+    contentWidth: this.width * (widgetContentWidth / widgetWidth)
+    contentHeight: this.height * (widgetContentHeight / widgetHeight)
     spacing: plasmoid.configuration.timersSpacing
-    orientation: ListView.Horizontal
+    orientation: verticalOrientation ? ListView.Vertical : ListView.Horizontal
     model: timersModel
     delegate: timerComponent
+
+    function currentVisibleIndex() {
+      return indexAt(contentX, contentY)
+    }
+
+    function switchWithAnimation(index) {
+      switchingAnimation.running = false;
+
+      let sourcePosition = !verticalOrientation ? contentX : contentY;
+      let destinationPosition;
+
+      currentIndex = index
+      positionViewAtIndex(index, ListView.Contain);
+      destinationPosition = !verticalOrientation ? contentX : contentY;
+
+      switchingAnimation.from = sourcePosition;
+      switchingAnimation.to = destinationPosition;
+      switchingAnimation.running = true;
+    }
   }
 
   ListModel {
@@ -251,6 +521,7 @@ Item {
 
   Image {
     id: placeholderIcon
+    fillMode: Image.PreserveAspectFit
     anchors.fill: parent
     scale: 0.8
     source: '../workrave-sheep.svg'
@@ -272,7 +543,6 @@ Item {
     onNewData: {
       if (!interval)
         return
-
       if (data.stdout.length) {
         isWorkraveInstalled = true
         workraveDataDBus.interval = updateIntervalInMilliseconds
@@ -455,8 +725,14 @@ Item {
     this.idle = 0
     this.limit = 0
     this.auto_reset = 0
-    this.width_ratio = 0
-  }
+    this.item_width_ratio = 0
+    this.item_height_ratio = 0
+    this.bar_width_ratio = 0
+    this.icon_width_ratio = 0
+    this.font_width_ratio = 0
+    this.font_height_ratio = 0
+    this.previous_label_width = 0
+    }
 
   function addModelItem(timerId) {
     let microItem = new appletTimer(timerId)
@@ -472,70 +748,317 @@ Item {
     }
   }
 
-  function secondsLeft(timersModelItem) {
-    let seconds = timersModelItem.limit - timersModelItem.elapsed
-    let date = new Date(0)
-    date.setSeconds(Math.abs(seconds))
-    let timerString = date.toISOString().substr(11, 8)
-    timerString = timerString.replace(/^[0:]+/, "")
+  function formatSeconds(inputSeconds) {
+    let seconds = Math.abs(inputSeconds) % 60
+    let minutes = Math.floor(Math.abs(inputSeconds) / 60)
+    let hours = Math.floor(minutes / 60)
+    minutes %= 60
+    let formattedString = ""
+    if (plasmoid.configuration.showOnlyTheMostSignificantTimerPart) {
+      if (hours)
+        formattedString += hours + (plasmoid.configuration.showTimeUnits ? "h" : "")
+      else if (minutes)
+        formattedString += minutes + (plasmoid.configuration.showTimeUnits ? "m" : "")
+      else if (seconds)
+        formattedString += seconds + (plasmoid.configuration.showTimeUnits ? "s" : "")
+    } else {
+      if (hours)
+        formattedString += hours + ":"
+      if (hours || minutes)
+        formattedString += ("00"+minutes).slice(-2) + ":"
+      if (hours || minutes || seconds)
+        formattedString += ("00"+seconds).slice(-2)
+      formattedString = formattedString.replace(/^[0:]+/, "")
+    }
+    if (inputSeconds < 0 && plasmoid.configuration.showMinusSign)
+      formattedString = "-" + formattedString
+    else if (!inputSeconds)
+      formattedString = "0"
 
-    if (!seconds)
-      timerString = "0"
-    else if (seconds < 0)
-      timerString = "-" + timerString
-    return timerString
+    return formattedString
+  }
+
+  function minimumPlasmoidSize() {
+    switch (plasmoid.location) {
+      case PlasmaCore.Types.Floating:
+        let iconSizes = PlasmaCore.Units.iconSizes.small
+        if (PlasmaCore.Units.devicePixelRatio == 1.25) {
+          // this ensures that the mimimum size on 125 % scaling is 52x52 as tested during runtime
+          iconSizes *= PlasmaCore.Units.devicePixelRatio
+          console.warn("Working around minimum applet size calculation on 125% display scaling")
+        }
+
+        // got topPadding and bottomPadding from https://invent.kde.org/plasma/plasma-workspace/-/raw/master/components/containmentlayoutmanager/qml/BasicAppletContainer.qml
+        // infered 4 * PlasmaCore.Units.iconSizes.small from https://invent.kde.org/plasma/plasma-desktop/-/blob/master/containments/desktop/package/contents/ui/FolderView.qml
+        let minimumSize = 4 * iconSizes - Plasmoid.parent.topPadding - Plasmoid.parent.bottomPadding
+        return Qt.size(minimumSize, minimumSize)
+      case PlasmaCore.Types.TopEdge:
+      case PlasmaCore.Types.BottomEdge:
+        return Qt.size(0, Plasmoid.parent.height)
+      case PlasmaCore.Types.LeftEdge:
+      case PlasmaCore.Types.RightEdge:
+        return Qt.size(Plasmoid.parent.width, 0)
+      default:
+        return Qt.size(0, 0)
+    }
+  }
+
+  function widestDigit() {
+    let digitIndex  = 0
+    let digitWidth = -1
+    for (let i = 0; i < 10; ++i) {
+      staticTextMetrics.text = i
+      if (staticTextMetrics.width > digitWidth) {
+        digitWidth = staticTextMetrics.width
+        digitIndex = i
+      }
+    }
+    return digitIndex
+  }
+
+  function widestTimeUnit() {
+    let returnedTimeUnit  = 0
+    let timeUnitWidth = -1
+    let timeUnits = ["h", "m", "s"]
+    for (let i = 0; i < timeUnits.length; ++i) {
+      staticTextMetrics.text = timeUnits[i]
+      if (staticTextMetrics.width > timeUnitWidth) {
+        timeUnitWidth = staticTextMetrics.width
+        returnedTimeUnit = timeUnits[i]
+      }
+    }
+    return returnedTimeUnit
   }
 
   function action_adjustSize() {
-    let newWidth = 0
-    let digitsSum = 0
-    let timerStringLengths = []
-    for (let i = 0; i < timersModel.count; ++i) {
-      let timerValueToEstimateLength = timersModel.get(i).limit
-      if (timersModel.get(i).elapsed - timersModel.get(i).limit > timersModel.get(i).limit)
-        timerValueToEstimateLength = timersModel.get(i).elapsed
-
-      let date = new Date(0)
-      date.setSeconds(Math.abs(timerValueToEstimateLength))
-      let timerString = date.toISOString().substr(11, 8)
-      timerString = timerString.replace(/^[0:]+/, "")
-      timerString = '-' + timerString
-
-      let timerStringLength = timerString.length
-      textMetrics.text = timerString
-      let timerStringPixelLength = textMetrics.width
-
-      digitsSum += timerStringLength
-      timerStringLengths.push(timerStringLength)
-
-      newWidth += timerStringPixelLength
-      newWidth += plasmoid.configuration.timersExtraWidth
+    if (!timersModel.count) {
+      widgetWidth = main.height * placeholderIcon.sourceSize.width / placeholderIcon.sourceSize.height
+      return
     }
 
-    newWidth += timersModel.count * plasmoid.configuration.timersSpacing
+    let minPlasmoidSize = minimumPlasmoidSize()
 
-    let timerStringLengthsSum = 0
-    for (const timerStringLength of timerStringLengths)
-      timerStringLengthsSum += timerStringLength
+    let timerStringHeights = []
+    let timerStringWidths = []
+    let maximumTimerStringHeight = 0
+    let maximumTimerStringWidth = 0
+    for (let i = 0; i < timersModel.count; ++i) {
+      let timerValueToEstimateWidth = 0
+      if (plasmoid.configuration.showOnlyTheMostSignificantTimerPart) {
+        timerValueToEstimateWidth = 59
+      } else {
+        timerValueToEstimateWidth = timersModel.get(i).limit
+        if (timersModel.get(i).elapsed - timersModel.get(i).limit > timersModel.get(i).limit)
+          timerValueToEstimateWidth = timersModel.get(i).elapsed
+      }
+      let timerString = formatSeconds(-timerValueToEstimateWidth)
+      timerString = timerString.replace(/[hms]/g, widestTimeUnit)
+      timerString = timerString.replace(/\d/g, widestDigit)
 
-    for (let i = 0; i < timersModel.count; ++i)
-      timersModel.setProperty(i, "width_ratio", timerStringLengths[i] / timerStringLengthsSum)
+      staticTextMetrics.text = timerString
+      let timerStringPixelWidth = staticTextMetrics.tightBoundingRect.width
+      let timerStringPixelHeight = staticTextMetrics.tightBoundingRect.height
 
-    // If one wants to resize Plasmoid from width 104 to 105 then it fails...
-    // ...because the closest next width is 120.
-    // Magic value ensures that we always have more width instead of less.
-    let magicValue = 16
+      timerStringWidths.push(timerStringPixelWidth)
+      timerStringHeights.push(timerStringPixelHeight)
 
-    // hack to successfully resize floating containment after first resize
-//     if (plasmoid.location == PlasmaCore.Types.Floating)
-//       plasmoid.parent.width = newWidth + magicValue
-    if (timersModel.count)
-      widgetWidth = newWidth + magicValue
-    else
-      widgetWidth = main.height * placeholderIcon.sourceSize.width / placeholderIcon.sourceSize.height
+      if (maximumTimerStringHeight < timerStringPixelHeight)
+        maximumTimerStringHeight = timerStringPixelHeight
+
+      if (maximumTimerStringWidth < timerStringPixelWidth)
+        maximumTimerStringWidth = timerStringPixelWidth
+    }
+
+    let totalSpacingBetweenItems = (timersModel.count - 1) * plasmoid.configuration.timersSpacing
+
+    let newMinimumWidth = 0
+    let newMinimumHeight = 0
+    let maximumItemWidth = 0
+    let widthFromTexts = 0
+    let widthFromIcon = 0
+    let pixelsNotFittingSizeResolution = 0
+    let extraPixelsToFitSizeResolution = 0
+    let pixelsOverMinimumSize = 0
+
+    if (verticalOrientation) {
+      let itemsHeight = 0
+      let maximumItemHeight = 0
+
+      for (let i = 0; i < timerStringHeights.length; ++i) {
+        let itemHeight = timerStringHeights[i] + plasmoid.configuration.timersExtraHeight
+        if (maximumItemHeight < itemHeight)
+          maximumItemHeight = itemHeight
+      }
+
+      if (plasmoid.configuration.singleTimerMode) {
+        // in the case of a small font, the minimum plasmoid height can be greater than its required height thus
+        maximumItemHeight = Math.max(maximumItemHeight, minPlasmoidSize.height)
+        pixelsOverMinimumSize = maximumItemHeight - minPlasmoidSize.height
+        // If one wants to resize Plasmoid from height 104 to 105 then it fails...
+        // ...because the closest next height is 120.
+        // This is to ensure that we're always resizing to a valid height.
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        maximumItemHeight += extraPixelsToFitSizeResolution
+        // doesn't have to fit the resolution because it's dedicated for the content height
+        itemsHeight = maximumItemHeight * timerStringHeights.length
+      } else {
+        // if each item height is not equal...
+        // ...and plasmoid height is less than the aspect ratio...
+        // ...then the bar lenghts of the timers aren't equal in length showing offsets between them
+        itemsHeight = maximumItemHeight * timerStringHeights.length
+        pixelsOverMinimumSize = (itemsHeight + totalSpacingBetweenItems) - minPlasmoidSize.height
+
+        if (pixelsOverMinimumSize < 0) {
+          maximumItemHeight += Math.floor(Math.abs(pixelsOverMinimumSize) / timerStringHeights.length)
+          itemsHeight += timerStringHeights.length * Math.floor(Math.abs(pixelsOverMinimumSize) / timerStringHeights.length)
+          // remaining pixels are added to spacing in order to not produce items with differing heights
+          totalSpacingBetweenItems += pixelsOverMinimumSize % timerStringHeights.length
+          pixelsOverMinimumSize = 0
+        }
+
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+
+        if (extraPixelsToFitSizeResolution > 0) {
+          maximumItemHeight += Math.floor(extraPixelsToFitSizeResolution / timerStringHeights.length)
+          itemsHeight += timerStringHeights.length * Math.floor(extraPixelsToFitSizeResolution / timerStringHeights.length)
+          totalSpacingBetweenItems += extraPixelsToFitSizeResolution % timerStringHeights.length
+          extraPixelsToFitSizeResolution = 0
+        }
+      }
+
+      if (plasmoid.configuration.iconEnabled)
+        widthFromIcon = itemsHeight / timerStringHeights.length
+
+      let itemBarWidth = maximumTimerStringWidth + plasmoid.configuration.timersExtraWidth
+      maximumItemWidth = widthFromIcon + itemBarWidth
+      pixelsOverMinimumSize = maximumItemWidth -  minPlasmoidSize.width
+      if (pixelsOverMinimumSize < 0) {
+        maximumItemWidth -= pixelsOverMinimumSize
+        itemBarWidth -= pixelsOverMinimumSize
+        pixelsOverMinimumSize = 0
+      }
+
+      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+
+      maximumItemWidth += extraPixelsToFitSizeResolution
+      itemBarWidth += extraPixelsToFitSizeResolution
+      for (let i = 0; i < timersModel.count; ++i) {
+        timersModel.setProperty(i, "item_width_ratio", 1)
+        timersModel.setProperty(i, "item_height_ratio", maximumItemHeight / itemsHeight)
+        timersModel.setProperty(i, "bar_width_ratio", itemBarWidth / maximumItemWidth)
+        timersModel.setProperty(i, "icon_width_ratio", widthFromIcon / maximumItemWidth)
+        timersModel.setProperty(i, "font_height_ratio", staticTextMetrics.font.pointSize / maximumItemHeight)
+        timersModel.setProperty(i, "font_width_ratio", staticTextMetrics.font.pointSize / itemBarWidth)
+      }
+
+      newMinimumWidth = maximumItemWidth
+      newMinimumHeight = totalSpacingBetweenItems + itemsHeight
+
+      widgetContentWidth = newMinimumWidth
+      widgetContentHeight = newMinimumHeight
+      widgetWidth = newMinimumWidth
+
+      if (plasmoid.configuration.singleTimerMode)
+        widgetHeight = maximumItemHeight
+      else
+        widgetHeight = newMinimumHeight
+    } else {
+      newMinimumHeight = Math.max(minPlasmoidSize.height, maximumTimerStringHeight) + plasmoid.configuration.timersExtraHeight
+
+      // will never be negative so no need to check that
+      pixelsOverMinimumSize = newMinimumHeight - minPlasmoidSize.height
+      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+      newMinimumHeight += extraPixelsToFitSizeResolution
+
+      widthFromIcon = newMinimumHeight
+
+      let itemsWidth = 0
+      let itemWidths = []
+      let itemBarWidths = []
+      let itemIconWidths = []
+
+      for (let i = 0; i < timersModel.count; ++i) {
+        itemIconWidths.push(plasmoid.configuration.iconEnabled ? widthFromIcon : 0)
+        itemBarWidths.push(timerStringWidths[i] + plasmoid.configuration.timersExtraWidth)
+        itemWidths.push(itemIconWidths[i] + itemBarWidths[i])
+        itemsWidth += itemWidths[i]
+        if (maximumItemWidth < itemWidths[i])
+          maximumItemWidth = itemWidths[i]
+      }
+
+      if (plasmoid.configuration.singleTimerMode) {
+        maximumItemWidth = Math.max(maximumItemWidth, minPlasmoidSize.width)
+        // will never be negative so no need to check that
+        pixelsOverMinimumSize = maximumItemWidth - minPlasmoidSize.width
+
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+
+        maximumItemWidth += extraPixelsToFitSizeResolution
+        for (let i = 0; i < itemWidths.length; ++i) {
+          itemBarWidths[i] += maximumItemWidth - itemWidths[i]
+          itemWidths[i] = maximumItemWidth
+        }
+        itemsWidth = maximumItemWidth * itemWidths.length
+      } else {
+        pixelsOverMinimumSize = (itemsWidth + totalSpacingBetweenItems) - minPlasmoidSize.width
+
+        while (pixelsOverMinimumSize < 0) {
+          for (let i = 0; i < timerStringWidths.length; ++i) {
+            itemWidths[i] += 1
+            itemsWidth += 1
+            pixelsOverMinimumSize += 1
+            if (!pixelsOverMinimumSize)
+              break
+          }
+        }
+
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        itemsWidth += extraPixelsToFitSizeResolution
+
+        while(extraPixelsToFitSizeResolution >0) {
+          for (let i = 0; i < itemWidths.length; ++i) {
+            itemWidths[i] += 1
+            itemBarWidths[i] += 1
+            extraPixelsToFitSizeResolution -= 1
+            if (!extraPixelsToFitSizeResolution)
+              break
+          }
+        }
+      }
+
+      for (let i = 0; i < timersModel.count; ++i) {
+        timersModel.setProperty(i, "item_width_ratio", itemWidths[i] / itemsWidth)
+        timersModel.setProperty(i, "item_height_ratio", 1)
+        timersModel.setProperty(i, "bar_width_ratio", itemBarWidths[i] / itemWidths[i])
+        timersModel.setProperty(i, "icon_width_ratio", itemIconWidths[i] / itemWidths[i])
+        timersModel.setProperty(i, "font_height_ratio", staticTextMetrics.font.pointSize / newMinimumHeight)
+        timersModel.setProperty(i, "font_width_ratio", staticTextMetrics.font.pointSize / itemBarWidths[i])
+      }
+      newMinimumWidth = totalSpacingBetweenItems + itemsWidth
+      if (plasmoid.configuration.singleTimerMode)
+        widgetWidth = maximumItemWidth
+      else
+        widgetWidth = newMinimumWidth
+
+      widgetContentWidth = newMinimumWidth
+      widgetContentHeight = newMinimumHeight
+      widgetHeight = newMinimumHeight
+    }
   }
 
+  // for changing font size during execution
   TextMetrics {
-    id: textMetrics
+    id: dynamicTextMetrics
+  }
+
+  // for calculating applet size during calculation
+  TextMetrics {
+    id: staticTextMetrics
   }
 }

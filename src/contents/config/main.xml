@@ -18,16 +18,56 @@
             <default>false</default>
         </entry>
 
+        <entry name="timersOrientation" type="Int">
+            <default>0</default>
+        </entry>
+
+        <entry name="singleTimerMode" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="periodicalSwitch" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="periodicalSwitchInterval" type="Int">
+            <default>0</default>
+        </entry>
+
+        <entry name="conditionalSwitch" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="timeDifferenceSwitch" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="timeDifferenceSwitchDifference" type="Int">
+            <default>3600</default>
+        </entry>
+
         <entry name="detectWorkraveConfigurationChanges" type="Bool">
             <default>false</default>
         </entry>
 
-        <entry name="updateInterval" type="Double">
-            <default>1.0</default>
+        <entry name="updateInterval" type="Int">
+            <default>1</default>
         </entry>
     </group>
 
     <group name="Appearance">
+        <entry name="iconEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="iconHeightPercentage" type="Int">
+            <default>100</default>
+        </entry>
+
+        <entry name="progressBarEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+
         <entry name="progressBarNormalBackground" type="Color">
             <default>#F6F5F4</default>
         </entry>
@@ -48,22 +88,42 @@
             <default>#90EE90</default>
         </entry>
 
-        <entry name="customFont" type="Font">
+        <entry name="progressBarHeightPercentage" type="Int">
+            <default>80</default>
         </entry>
 
         <entry name="useCustomFont" type="Bool">
           <default>false</default>
         </entry>
 
+        <entry name="customFont" type="Font">
+        </entry>
+
         <entry name="fontColor" type="Color">
             <default>#000000</default>
         </entry>
 
-        <entry name="progressBarHeightMultiplier" type="Double">
-            <default>0.8</default>
+        <entry name="labelEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+
+        <entry name="showOnlyTheMostSignificantTimerPart" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="showTimeUnits" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="showMinusSign" type="Bool">
+            <default>true</default>
         </entry>
 
         <entry name="timersExtraWidth" type="Int">
+            <default>0</default>
+        </entry>
+
+        <entry name="timersExtraHeight" type="Int">
             <default>0</default>
         </entry>
 
@@ -71,17 +131,6 @@
             <default>1</default>
         </entry>
 
-        <entry name="fontHeightMultiplier" type="Double">
-            <default>1.0</default>
-        </entry>
-
-        <entry name="progressBarEnabled" type="Bool">
-            <default>true</default>
-        </entry>
-
-        <entry name="labelEnabled" type="Bool">
-            <default>true</default>
-        </entry>
     </group>
 
 </kcfg>
