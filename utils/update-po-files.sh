@@ -1,22 +1,58 @@
-#!/bin/bash
+#!/bin/sh
+# based on https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories#Extracting_and_merging_messages
 
-cd ..
-root_dir=$(pwd)
-msg_basename="plasma_applet_org.kde.workraveApplet"
+BASEDIR="../src/"	# root of translatable sources
+PODIR="../po/"
+PROJECT="plasma_applet_org.kde.workraveApplet"	# project name
+BUGADDR="https://github.com/wojnilowicz/workrave-applet/issues"	# MSGID-Bugs
+WDIR=`pwd`		# working dir
 
-cd utils
-extract_messages_script="scripts/extract-messages.sh"
-if [ ! -f $extract_messages_script ]; then
-  svn checkout svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/scripts
-fi
 
-if [ -f $extract_messages_script ]; then
-  sed -i s+"https://bugs.kde.org"+"https://github.com/wojnilowicz/workrave-applet/issues"+g $extract_messages_script
-  export PACKAGE="workrave-applet"
-fi
+echo "Preparing rc files"
+cd ${BASEDIR}
+# we use simple sorting to make sure the lines do not jump around too much from system to system
+find . -name '*.rc' -o -name '*.ui' -o -name '*.kcfg' | sort > ${WDIR}/rcfiles.list
+xargs --arg-file=${WDIR}/rcfiles.list extractrc > ${WDIR}/rc.cpp
+# additional string for KAboutData
+echo 'i18nc("NAME OF TRANSLATORS","Your names");' >> ${WDIR}/rc.cpp
+echo 'i18nc("EMAIL OF TRANSLATORS","Your emails");' >> ${WDIR}/rc.cpp
+cd ${WDIR}
 
-cd $root_dir
-PATH=./utils/scripts:$PATH bash ./utils/$extract_messages_script
+intltool-extract --quiet --type=gettext/ini metadata.desktop.template
+mv metadata.desktop.template.h ${WDIR}/rc.cpp
+cd ${WDIR}
+echo "Done preparing rc files"
 
-cd po
-find . -iname *.po -exec msgmerge --update --backup=none --previous {} $msg_basename.pot \;
+echo "Extracting messages"
+cd ${BASEDIR}
+# see above on sorting
+find . -name '*.qml' | sort > ${WDIR}/infiles.list
+echo "rc.cpp" >> ${WDIR}/infiles.list
+cd ${WDIR}
+xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
+	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 -kN_:1 \
+	--msgid-bugs-address="${BUGADDR}" \
+	--files-from=infiles.list -D ${BASEDIR} -D ${WDIR} -o ${PODIR}${PROJECT}.pot || { echo "error while calling xgettext. aborting."; exit 1; }
+echo "Done extracting messages"
+
+
+echo "Merging translations"
+catalogs=`find ${PODIR} -name '*.po'`
+for cat in $catalogs; do
+  echo $cat
+  msgmerge -o $cat.new $cat ${PODIR}${PROJECT}.pot
+  mv $cat.new $cat
+done
+
+cd ${WDIR}
+intltool-merge --quiet --desktop-style ${WDIR} metadata.desktop.template ${BASEDIR}metadata.desktop
+
+echo "Done merging translations"
+
+
+echo "Cleaning up"
+cd ${WDIR}
+rm rcfiles.list
+rm infiles.list
+rm rc.cpp
+echo "Done"
