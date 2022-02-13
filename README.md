@@ -29,4 +29,4 @@ modify it under the terms of the [GNU General Public License](https://www.gnu.or
 as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 
-File named "workrave-sheep.svg" is part of [Workrave](https://github.com/rcaelers/workrave) application and must be licensed in accordance with that application's license.
+Files named "workrave-sheep.svg", "timer-daily-large.png", "timer-micro-break-large.png", "timer-rest-break-large.png" are a part of [Workrave](https://github.com/rcaelers/workrave) application and must be licensed in accordance with that application's license.
