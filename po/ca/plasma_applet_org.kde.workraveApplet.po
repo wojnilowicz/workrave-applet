@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.workraveApplet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
-"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"POT-Creation-Date: 2022-02-13 10:18+0100\n"
 "PO-Revision-Date: 2020-07-07 14:31+0100\n"
 "Last-Translator: Josep Ma. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -18,124 +18,212 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 2.0\n"
 
-#: src/contents/config/config.qml:23
-#, kde-format
+#: contents/config/config.qml:12
 msgid "Timers"
 msgstr "Temporitzadors"
 
-#: src/contents/config/config.qml:29
-#, kde-format
+#: contents/config/config.qml:18
 msgid "Appearance"
 msgstr "Aparença"
 
-#: src/contents/ui/config/ConfigAppearance.qml:47
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:43
+#, fuzzy
+msgid "Display icon"
+msgstr "Mostra l'etiqueta"
+
+#: contents/ui/config/ConfigAppearance.qml:61
+#: contents/ui/config/ConfigAppearance.qml:123
+msgid "Height percentage"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:70
 msgid "Display progress bar"
 msgstr "Mostra la barra de progrés"
 
-#: src/contents/ui/config/ConfigAppearance.qml:60
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:82
 msgid "Background in normal state"
 msgstr "Fons en estat normal"
 
-#: src/contents/ui/config/ConfigAppearance.qml:65
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:88
 msgid "Background in overdue state"
 msgstr "Fons en estat vençut"
 
-#: src/contents/ui/config/ConfigAppearance.qml:70
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:94
 msgid "Foreground in activity state"
 msgstr "Primer pla en estat d'activitat"
 
-#: src/contents/ui/config/ConfigAppearance.qml:75
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:100
 msgid "Foreground at idle time in elapsed time"
 msgstr "Primer pla en temps d'inactivitat per temps transcorregut"
 
-#: src/contents/ui/config/ConfigAppearance.qml:80
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:106
 msgid "Foreground at idle time"
 msgstr "Primer pla en temps d'inactivitat"
 
-#: src/contents/ui/config/ConfigAppearance.qml:86
-#: src/contents/ui/config/ConfigAppearance.qml:170
-#, kde-format
-msgid "Height multiplier"
-msgstr "Multiplicador de l'alçada"
-
-#: src/contents/ui/config/ConfigAppearance.qml:104
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:139
 msgid "Display label"
 msgstr "Mostra l'etiqueta"
 
-#: src/contents/ui/config/ConfigAppearance.qml:119
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:152
 msgid "Use custom font"
 msgstr "Usa un tipus de lletra personalitzat"
 
-#: src/contents/ui/config/ConfigAppearance.qml:134
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:166
 msgid "Custom font..."
 msgstr "Tipus de lletra personalitzat..."
 
-#: src/contents/ui/config/ConfigAppearance.qml:148
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:181
 msgid "Reset custom font to theme default."
 msgstr "Restaura el tipus de lletra personalitzat al tema predeterminat."
 
-#: src/contents/ui/config/ConfigAppearance.qml:165
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:196
 msgid "Color"
 msgstr "Color"
 
-#: src/contents/ui/config/ConfigAppearance.qml:181
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:201
+msgid "Show only the most significant timer part"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:203
+msgid ""
+"Check this if you want to hide e.g. seconds left when there are still some "
+"minutes left."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:210
+msgid "Show time units"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:212
+msgid "Check this if you want to show time units like: h, m, s in a timer."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:218
+msgid "Show minus sign"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:220
+msgid "Check this if you want to show a minus sign if a timer is overdue."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:228
+#: contents/ui/config/ConfigTimers.qml:191
 msgid "Misc"
 msgstr "Miscel·lània"
 
-#: src/contents/ui/config/ConfigAppearance.qml:191
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:248
 msgid "Extra width per timer"
 msgstr "Amplada extra per temporitzador"
 
-#: src/contents/ui/config/ConfigAppearance.qml:200
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:265
+#, fuzzy
+msgid "Extra height per timer"
+msgstr "Amplada extra per temporitzador"
+
+#: contents/ui/config/ConfigAppearance.qml:281
 msgid "Spacing between timers"
 msgstr "Espaiat entre els temporitzadors"
 
-#: src/contents/ui/config/ConfigAppearance.qml:209
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:290
 msgid "Use Workrave colors"
 msgstr "Usa els colors del Workrave"
 
-#: src/contents/ui/config/ConfigAppearance.qml:221
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:303
 msgid "Use system theme colors"
 msgstr "Usa colors del tema del sistema"
 
-#: src/contents/ui/config/ConfigTimers.qml:34
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:35
+msgctxt "Breaks as in break from work."
+msgid "Breaks"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:43
 msgid "Enable micro break timer"
 msgstr "Activa el temporitzador de micropauses"
 
-#: src/contents/ui/config/ConfigTimers.qml:39
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:48
 msgid "Enable rest timer"
 msgstr "Activa el temporitzador de descans"
 
-#: src/contents/ui/config/ConfigTimers.qml:44
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:53
 msgid "Enable daily limit timer"
 msgstr "Activa el temporitzador de límit diari"
 
-#: src/contents/ui/config/ConfigTimers.qml:49
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:61
+msgid "Layout"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:74
+msgctxt ""
+"Whether timers should be laid out horizontally/vertically/automatically"
+msgid "Orientation"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:83
+msgid "Auto"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:84
+msgid "Horizontal"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:85
+msgid "Vertical"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:93
+msgid "Single timer display mode"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:95
+msgid ""
+"Check this if you want to display only a single timer at a time. Click or "
+"drag on it with a pointer if you want to switch to another timer."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:108
+msgid "Switch timers periodically"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:110
+msgid ""
+"Check this if you want to switch to another timer after given amount of "
+"seconds."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:132
+#, fuzzy
+msgid "Periodical switching interval in seconds"
+msgstr "Interval d'actualització en segons"
+
+#: contents/ui/config/ConfigTimers.qml:143
+msgid "Switch timers conditionally"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:145
+msgid ""
+"Check this if you want to switch to another timer when a condition is met."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:157
+msgid "Switch on a difference between elapsed and limit time"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:159
+msgid ""
+"Check this if you want to automatically switch to a timer closest to being "
+"overdue."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:177
+msgid "Difference between elapsed and limit time"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:199
 msgid "Detect Workrave configuration changes"
 msgstr "Detecta els canvis de configuració del Workrave"
 
-#: src/contents/ui/config/ConfigTimers.qml:51
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:201
 msgctxt ""
 "The Applet can synchronize its settings with Workrave automatically, at "
 "certain time intervals, which will be using some CPU resources. The "
@@ -144,16 +232,10 @@ msgid ""
 "Disable if performance is of concern, and you want to update it manually in "
 "context menu."
 msgstr ""
-"Desactiva si hi ha inquietud pel rendiment, i el voleu actualitzar manualment"
-" al menú contextual."
+"Desactiva si hi ha inquietud pel rendiment, i el voleu actualitzar "
+"manualment al menú contextual."
 
-#: src/contents/ui/config/ConfigTimers.qml:58
-#, kde-format
-msgid "Update interval in seconds"
-msgstr "Interval d'actualització en segons"
-
-#: src/contents/ui/config/ConfigTimers.qml:61
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:214
 msgctxt ""
 "Timers can report their status e.g. every 5 seconds (instead of every 1 "
 "second) and thus need less CPU resources."
@@ -161,37 +243,55 @@ msgid ""
 "Set higher if performance is of concern, and you don't need frequent timer "
 "readings."
 msgstr ""
-"Establiu-ho més alt si hi ha inquietud pel rendiment, i no cal lectures"
-" freqüents del temporitzador."
+"Establiu-ho més alt si hi ha inquietud pel rendiment, i no cal lectures "
+"freqüents del temporitzador."
 
-#: src/contents/ui/main.qml:289
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:220
+msgid "Update interval in seconds"
+msgstr "Interval d'actualització en segons"
+
+#: contents/ui/main.qml:553
 msgid "Reload Workrave configuration"
 msgstr "Torna a carregar la configuració del Workrave"
 
-#: src/contents/ui/main.qml:290
-#, kde-format
+#: contents/ui/main.qml:554
 msgid "Recalculate applet size"
 msgstr "Torna a calcular la mida de la miniaplicació"
 
-#: src/contents/ui/main.qml:301
-#, kde-format
+#: contents/ui/main.qml:571
+msgid "Issue with qdbus"
+msgstr ""
+
+#: contents/ui/main.qml:572
+msgid ""
+"Please make sure that the command `qdbus org.workrave.Workrave` works "
+"without issues in your terminal."
+msgstr ""
+
+#: contents/ui/main.qml:574
 msgid "Workrave not installed"
 msgstr "El Workrave no està instal·lat"
 
-#: src/contents/ui/main.qml:302
-#, kde-format
+#: contents/ui/main.qml:575
 msgid "Please install Workrave."
 msgstr "Instal·leu el Workrave."
 
-#: src/contents/ui/main.qml:353
-#, kde-format
+#: contents/ui/main.qml:650
 msgid "No Workrave timers added"
 msgstr "No s'ha afegit cap temporitzador del Workrave"
 
-#: src/contents/ui/main.qml:354
-#, kde-format
+#: contents/ui/main.qml:651
 msgid "Please add a timer in applet settings."
 msgstr "Afegiu un temporitzador a la configuració de la miniaplicació."
 
+#: rc.cpp:1
+msgid "Workrave Applet"
+msgstr ""
 
+#: rc.cpp:2
+msgid "Displays timers of Workrave"
+msgstr ""
+
+#, kde-format
+#~ msgid "Height multiplier"
+#~ msgstr "Multiplicador de l'alçada"

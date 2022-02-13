@@ -6,136 +6,224 @@ msgid ""
 msgstr ""
 "Project-Id-Version: workrave-applet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
-"POT-Creation-Date: 2020-07-06 19:57+0200\n"
+"POT-Creation-Date: 2022-02-13 10:18+0100\n"
 "PO-Revision-Date: 2020-07-08 12:56+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3.1\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
 "%100<=4 ? 2 : 3);\n"
-"Language: sl\n"
 
-#: src/contents/config/config.qml:23
-#, kde-format
+#: contents/config/config.qml:12
 msgid "Timers"
 msgstr "Merilniki časa"
 
-#: src/contents/config/config.qml:29
-#, kde-format
+#: contents/config/config.qml:18
 msgid "Appearance"
 msgstr "Videz"
 
-#: src/contents/ui/config/ConfigAppearance.qml:47
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:43
+#, fuzzy
+msgid "Display icon"
+msgstr "Prikaži oznako"
+
+#: contents/ui/config/ConfigAppearance.qml:61
+#: contents/ui/config/ConfigAppearance.qml:123
+msgid "Height percentage"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:70
 msgid "Display progress bar"
 msgstr "Prikaži letvico napredka"
 
-#: src/contents/ui/config/ConfigAppearance.qml:60
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:82
 msgid "Background in normal state"
 msgstr "Ozadje v normalnem stanju"
 
-#: src/contents/ui/config/ConfigAppearance.qml:65
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:88
 msgid "Background in overdue state"
 msgstr "Ozadje v zaostalem stanju"
 
-#: src/contents/ui/config/ConfigAppearance.qml:70
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:94
 msgid "Foreground in activity state"
 msgstr "Ospredje v dejavnem stanju"
 
-#: src/contents/ui/config/ConfigAppearance.qml:75
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:100
 msgid "Foreground at idle time in elapsed time"
 msgstr "Ospredje pri prostem času v pretečenem času"
 
-#: src/contents/ui/config/ConfigAppearance.qml:80
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:106
 msgid "Foreground at idle time"
 msgstr "Ospredje pri prostem času"
 
-#: src/contents/ui/config/ConfigAppearance.qml:86
-#: src/contents/ui/config/ConfigAppearance.qml:170
-#, kde-format
-msgid "Height multiplier"
-msgstr "Multiplikator višine"
-
-#: src/contents/ui/config/ConfigAppearance.qml:104
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:139
 msgid "Display label"
 msgstr "Prikaži oznako"
 
-#: src/contents/ui/config/ConfigAppearance.qml:119
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:152
 msgid "Use custom font"
 msgstr "Uporabi pisavo po meri"
 
-#: src/contents/ui/config/ConfigAppearance.qml:134
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:166
 msgid "Custom font..."
 msgstr "Pisava po meri..."
 
-#: src/contents/ui/config/ConfigAppearance.qml:148
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:181
 msgid "Reset custom font to theme default."
 msgstr "Ponovno nastavi pisavo po meri na privzeto obliko."
 
-#: src/contents/ui/config/ConfigAppearance.qml:165
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:196
 msgid "Color"
 msgstr "Barva"
 
-#: src/contents/ui/config/ConfigAppearance.qml:181
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:201
+msgid "Show only the most significant timer part"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:203
+msgid ""
+"Check this if you want to hide e.g. seconds left when there are still some "
+"minutes left."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:210
+msgid "Show time units"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:212
+msgid "Check this if you want to show time units like: h, m, s in a timer."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:218
+msgid "Show minus sign"
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:220
+msgid "Check this if you want to show a minus sign if a timer is overdue."
+msgstr ""
+
+#: contents/ui/config/ConfigAppearance.qml:228
+#: contents/ui/config/ConfigTimers.qml:191
 msgid "Misc"
 msgstr "Razno"
 
-#: src/contents/ui/config/ConfigAppearance.qml:191
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:248
 msgid "Extra width per timer"
 msgstr "Posebna širina za merilnik časa"
 
-#: src/contents/ui/config/ConfigAppearance.qml:200
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:265
+#, fuzzy
+msgid "Extra height per timer"
+msgstr "Posebna širina za merilnik časa"
+
+#: contents/ui/config/ConfigAppearance.qml:281
 msgid "Spacing between timers"
 msgstr "Oddaljenost med merilniki časa"
 
-#: src/contents/ui/config/ConfigAppearance.qml:209
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:290
 msgid "Use Workrave colors"
 msgstr "Uporabi barve Workrave"
 
-#: src/contents/ui/config/ConfigAppearance.qml:221
-#, kde-format
+#: contents/ui/config/ConfigAppearance.qml:303
 msgid "Use system theme colors"
 msgstr "Uporabi barve sistemske teme"
 
-#: src/contents/ui/config/ConfigTimers.qml:34
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:35
+msgctxt "Breaks as in break from work."
+msgid "Breaks"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:43
 msgid "Enable micro break timer"
 msgstr "Omogoči mikro prekinjevalnik merilnika časa"
 
-#: src/contents/ui/config/ConfigTimers.qml:39
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:48
 msgid "Enable rest timer"
 msgstr "Omogoči merilnik oddiha"
 
-#: src/contents/ui/config/ConfigTimers.qml:44
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:53
 msgid "Enable daily limit timer"
 msgstr "Omogoči merilnik dnevne omejitve"
 
-#: src/contents/ui/config/ConfigTimers.qml:49
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:61
+msgid "Layout"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:74
+msgctxt ""
+"Whether timers should be laid out horizontally/vertically/automatically"
+msgid "Orientation"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:83
+msgid "Auto"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:84
+msgid "Horizontal"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:85
+msgid "Vertical"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:93
+msgid "Single timer display mode"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:95
+msgid ""
+"Check this if you want to display only a single timer at a time. Click or "
+"drag on it with a pointer if you want to switch to another timer."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:108
+msgid "Switch timers periodically"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:110
+msgid ""
+"Check this if you want to switch to another timer after given amount of "
+"seconds."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:132
+#, fuzzy
+msgid "Periodical switching interval in seconds"
+msgstr "Interval posodobitev v sekundah"
+
+#: contents/ui/config/ConfigTimers.qml:143
+msgid "Switch timers conditionally"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:145
+msgid ""
+"Check this if you want to switch to another timer when a condition is met."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:157
+msgid "Switch on a difference between elapsed and limit time"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:159
+msgid ""
+"Check this if you want to automatically switch to a timer closest to being "
+"overdue."
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:177
+msgid "Difference between elapsed and limit time"
+msgstr ""
+
+#: contents/ui/config/ConfigTimers.qml:199
 msgid "Detect Workrave configuration changes"
 msgstr "Zaznajte spremembe nastavitev Workrave"
 
-#: src/contents/ui/config/ConfigTimers.qml:51
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:201
 msgctxt ""
 "The Applet can synchronize its settings with Workrave automatically, at "
 "certain time intervals, which will be using some CPU resources. The "
@@ -147,13 +235,7 @@ msgstr ""
 "Onemogočite, če vas skrbi zmogljivost, in ga želite ročno posodobiti v "
 "kontekstnem meniju."
 
-#: src/contents/ui/config/ConfigTimers.qml:58
-#, kde-format
-msgid "Update interval in seconds"
-msgstr "Interval posodobitev v sekundah"
-
-#: src/contents/ui/config/ConfigTimers.qml:61
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:214
 msgctxt ""
 "Timers can report their status e.g. every 5 seconds (instead of every 1 "
 "second) and thus need less CPU resources."
@@ -164,32 +246,52 @@ msgstr ""
 "Nastavite višje, če vas skrbi zmogljivost in ne potrebujete pogosto odčitkov "
 "merilnika časa."
 
-#: src/contents/ui/main.qml:289
-#, kde-format
+#: contents/ui/config/ConfigTimers.qml:220
+msgid "Update interval in seconds"
+msgstr "Interval posodobitev v sekundah"
+
+#: contents/ui/main.qml:553
 msgid "Reload Workrave configuration"
 msgstr "Ponovno naloži nastavitve Workrave"
 
-#: src/contents/ui/main.qml:290
-#, kde-format
+#: contents/ui/main.qml:554
 msgid "Recalculate applet size"
 msgstr "Ponovno izračunaj velikost appleta"
 
-#: src/contents/ui/main.qml:301
-#, kde-format
+#: contents/ui/main.qml:571
+msgid "Issue with qdbus"
+msgstr ""
+
+#: contents/ui/main.qml:572
+msgid ""
+"Please make sure that the command `qdbus org.workrave.Workrave` works "
+"without issues in your terminal."
+msgstr ""
+
+#: contents/ui/main.qml:574
 msgid "Workrave not installed"
 msgstr "Workrave ni nameščen"
 
-#: src/contents/ui/main.qml:302
-#, kde-format
+#: contents/ui/main.qml:575
 msgid "Please install Workrave."
 msgstr "Namestite Workrave."
 
-#: src/contents/ui/main.qml:353
-#, kde-format
+#: contents/ui/main.qml:650
 msgid "No Workrave timers added"
 msgstr "Ni dodanih merilnikov časa Workrave"
 
-#: src/contents/ui/main.qml:354
-#, kde-format
+#: contents/ui/main.qml:651
 msgid "Please add a timer in applet settings."
 msgstr "Dodajte merilnik časa v nastavitvah appleta."
+
+#: rc.cpp:1
+msgid "Workrave Applet"
+msgstr ""
+
+#: rc.cpp:2
+msgid "Displays timers of Workrave"
+msgstr ""
+
+#, kde-format
+#~ msgid "Height multiplier"
+#~ msgstr "Multiplikator višine"
