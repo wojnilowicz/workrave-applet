@@ -1,13 +1,14 @@
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the workrave-applet package.
 #
-# Luiz F. Ranghetti <elchevive@opensuse.org>, 2020.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: workrave-applet\n"
-"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/"
+"issues\n"
 "POT-Creation-Date: 2022-02-13 10:18+0100\n"
-"PO-Revision-Date: 2020-07-06 11:39-0300\n"
+"PO-Revision-Date: 2022-02-14 09:58-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: contents/config/config.qml:12
 msgid "Timers"
@@ -26,14 +27,13 @@ msgid "Appearance"
 msgstr "Aparência"
 
 #: contents/ui/config/ConfigAppearance.qml:43
-#, fuzzy
 msgid "Display icon"
-msgstr "Mostrar rótulo"
+msgstr "Mostrar ícone"
 
 #: contents/ui/config/ConfigAppearance.qml:61
 #: contents/ui/config/ConfigAppearance.qml:123
 msgid "Height percentage"
-msgstr ""
+msgstr "Porcentagem da altura"
 
 #: contents/ui/config/ConfigAppearance.qml:70
 msgid "Display progress bar"
@@ -81,29 +81,35 @@ msgstr "Cores"
 
 #: contents/ui/config/ConfigAppearance.qml:201
 msgid "Show only the most significant timer part"
-msgstr ""
+msgstr "Mostrar apenas a parte mais significativa do temporizador"
 
 #: contents/ui/config/ConfigAppearance.qml:203
 msgid ""
 "Check this if you want to hide e.g. seconds left when there are still some "
 "minutes left."
 msgstr ""
+"Marque esta opção se você quiser esconder, por exemplo, os segundos "
+"restantes quando ainda faltam alguns minutos."
 
 #: contents/ui/config/ConfigAppearance.qml:210
 msgid "Show time units"
-msgstr ""
+msgstr "Mostrar unidades de tempo"
 
 #: contents/ui/config/ConfigAppearance.qml:212
 msgid "Check this if you want to show time units like: h, m, s in a timer."
 msgstr ""
+"Marque esta opção se você quiser mostrar as unidades de tempo como: h, m, s "
+"em um temporizador."
 
 #: contents/ui/config/ConfigAppearance.qml:218
 msgid "Show minus sign"
-msgstr ""
+msgstr "Mostrar sinal de menos"
 
 #: contents/ui/config/ConfigAppearance.qml:220
 msgid "Check this if you want to show a minus sign if a timer is overdue."
 msgstr ""
+"Marque esta opção se você quiser mostrar um sinal de menos se um "
+"temporizador estiver atrasado."
 
 #: contents/ui/config/ConfigAppearance.qml:228
 #: contents/ui/config/ConfigTimers.qml:191
@@ -115,9 +121,8 @@ msgid "Extra width per timer"
 msgstr "Largura extra por temporizador"
 
 #: contents/ui/config/ConfigAppearance.qml:265
-#, fuzzy
 msgid "Extra height per timer"
-msgstr "Largura extra por temporizador"
+msgstr "Altura extra por temporizador"
 
 #: contents/ui/config/ConfigAppearance.qml:281
 msgid "Spacing between timers"
@@ -134,7 +139,7 @@ msgstr "Usar cores do tema do sistema"
 #: contents/ui/config/ConfigTimers.qml:35
 msgctxt "Breaks as in break from work."
 msgid "Breaks"
-msgstr ""
+msgstr "Pausas"
 
 #: contents/ui/config/ConfigTimers.qml:43
 msgid "Enable micro break timer"
@@ -150,73 +155,81 @@ msgstr "Habilitar temporizador de limite diário"
 
 #: contents/ui/config/ConfigTimers.qml:61
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: contents/ui/config/ConfigTimers.qml:74
 msgctxt ""
 "Whether timers should be laid out horizontally/vertically/automatically"
 msgid "Orientation"
-msgstr ""
+msgstr "Orientação"
 
 #: contents/ui/config/ConfigTimers.qml:83
 msgid "Auto"
-msgstr ""
+msgstr "Automática"
 
 #: contents/ui/config/ConfigTimers.qml:84
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontal"
 
 #: contents/ui/config/ConfigTimers.qml:85
 msgid "Vertical"
-msgstr ""
+msgstr "Vertical"
 
 #: contents/ui/config/ConfigTimers.qml:93
 msgid "Single timer display mode"
-msgstr ""
+msgstr "Modo de exibição de temporizador único"
 
 #: contents/ui/config/ConfigTimers.qml:95
 msgid ""
 "Check this if you want to display only a single timer at a time. Click or "
 "drag on it with a pointer if you want to switch to another timer."
 msgstr ""
+"Marque esta opção se você quiser mostrar apenas um temporizador único por "
+"vez. Clique ou arraste com um ponteiro se você quiser alterar para outro "
+"temporizador."
 
 #: contents/ui/config/ConfigTimers.qml:108
 msgid "Switch timers periodically"
-msgstr ""
+msgstr "Alterar temporizadores periodicamente"
 
 #: contents/ui/config/ConfigTimers.qml:110
 msgid ""
 "Check this if you want to switch to another timer after given amount of "
 "seconds."
 msgstr ""
+"Marque esta opção se você quiser alterar para outro temporizador após certa "
+"quantidade de segundos."
 
 #: contents/ui/config/ConfigTimers.qml:132
-#, fuzzy
 msgid "Periodical switching interval in seconds"
-msgstr "Intervalo de atualização em segundos"
+msgstr "Intervalo de alteração periódica em segundos"
 
 #: contents/ui/config/ConfigTimers.qml:143
 msgid "Switch timers conditionally"
-msgstr ""
+msgstr "Alterar temporizadores condicionalmente"
 
 #: contents/ui/config/ConfigTimers.qml:145
 msgid ""
 "Check this if you want to switch to another timer when a condition is met."
 msgstr ""
+"Marque esta opção se você quiser alterar para outro temporizador quando uma "
+"certa condição for alcançada."
 
 #: contents/ui/config/ConfigTimers.qml:157
 msgid "Switch on a difference between elapsed and limit time"
-msgstr ""
+msgstr "Alterar em uma diferença entre o tempo decorrido e o tempo limite"
 
 #: contents/ui/config/ConfigTimers.qml:159
 msgid ""
 "Check this if you want to automatically switch to a timer closest to being "
 "overdue."
 msgstr ""
+"Marque esta opção se você quiser alterar automaticamente para um "
+"temporizador mais próximo de estar atrasado."
 
 #: contents/ui/config/ConfigTimers.qml:177
 msgid "Difference between elapsed and limit time"
-msgstr ""
+msgstr "Diferença entre o tempo decorrido e o tempo limite"
 
 #: contents/ui/config/ConfigTimers.qml:199
 msgid "Detect Workrave configuration changes"
@@ -259,13 +272,15 @@ msgstr "Recalcular tamanho do miniaplicativo"
 
 #: contents/ui/main.qml:571
 msgid "Issue with qdbus"
-msgstr ""
+msgstr "Problema com o qdbus"
 
 #: contents/ui/main.qml:572
 msgid ""
 "Please make sure that the command `qdbus org.workrave.Workrave` works "
 "without issues in your terminal."
 msgstr ""
+"Certifique-se de que o comando `qdbus org.workrave.Workrave` funciona sem "
+"problemas no seu terminal."
 
 #: contents/ui/main.qml:574
 msgid "Workrave not installed"
@@ -285,11 +300,11 @@ msgstr "Adicione um temporizador nas configurações do miniaplicativo."
 
 #: rc.cpp:1
 msgid "Workrave Applet"
-msgstr ""
+msgstr "Miniaplicativo Workrave"
 
 #: rc.cpp:2
 msgid "Displays timers of Workrave"
-msgstr ""
+msgstr "Mostra temporizadores do Workrave"
 
 #, kde-format
 #~ msgid "Height multiplier"
