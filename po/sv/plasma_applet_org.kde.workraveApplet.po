@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the workrave-applet package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: workrave-applet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
 "POT-Creation-Date: 2022-02-13 10:18+0100\n"
-"PO-Revision-Date: 2020-07-18 11:56+0200\n"
+"PO-Revision-Date: 2022-03-26 15:38+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 20.08.1\n"
 
 #: contents/config/config.qml:12
 msgid "Timers"
@@ -26,14 +26,13 @@ msgid "Appearance"
 msgstr "Utseende"
 
 #: contents/ui/config/ConfigAppearance.qml:43
-#, fuzzy
 msgid "Display icon"
-msgstr "Visa beteckning"
+msgstr "Visa ikon"
 
 #: contents/ui/config/ConfigAppearance.qml:61
 #: contents/ui/config/ConfigAppearance.qml:123
 msgid "Height percentage"
-msgstr ""
+msgstr "Höjdprocent"
 
 #: contents/ui/config/ConfigAppearance.qml:70
 msgid "Display progress bar"
@@ -81,29 +80,31 @@ msgstr "Färg"
 
 #: contents/ui/config/ConfigAppearance.qml:201
 msgid "Show only the most significant timer part"
-msgstr ""
+msgstr "Visa bara den mest signifikanta tidtagardelen"
 
 #: contents/ui/config/ConfigAppearance.qml:203
 msgid ""
 "Check this if you want to hide e.g. seconds left when there are still some "
 "minutes left."
 msgstr ""
+"Markera om du  vill dölja t.ex. återstående sekunder när det fortfarande är"
+" några minuter kvar."
 
 #: contents/ui/config/ConfigAppearance.qml:210
 msgid "Show time units"
-msgstr ""
+msgstr "Visa tidsenheter"
 
 #: contents/ui/config/ConfigAppearance.qml:212
 msgid "Check this if you want to show time units like: h, m, s in a timer."
-msgstr ""
+msgstr "Markera om du vill visa tidsenheter som: t, m, s i en tidtagare."
 
 #: contents/ui/config/ConfigAppearance.qml:218
 msgid "Show minus sign"
-msgstr ""
+msgstr "Visa minustecken"
 
 #: contents/ui/config/ConfigAppearance.qml:220
 msgid "Check this if you want to show a minus sign if a timer is overdue."
-msgstr ""
+msgstr "Markera om du vill visa ett minustecken om en tid har löpt ut."
 
 #: contents/ui/config/ConfigAppearance.qml:228
 #: contents/ui/config/ConfigTimers.qml:191
@@ -115,9 +116,8 @@ msgid "Extra width per timer"
 msgstr "Extra bredd per tidtagare"
 
 #: contents/ui/config/ConfigAppearance.qml:265
-#, fuzzy
 msgid "Extra height per timer"
-msgstr "Extra bredd per tidtagare"
+msgstr "Extra höjd per tidtagare"
 
 #: contents/ui/config/ConfigAppearance.qml:281
 msgid "Spacing between timers"
@@ -134,7 +134,7 @@ msgstr "Använd systemets temafärger"
 #: contents/ui/config/ConfigTimers.qml:35
 msgctxt "Breaks as in break from work."
 msgid "Breaks"
-msgstr ""
+msgstr "Pauser"
 
 #: contents/ui/config/ConfigTimers.qml:43
 msgid "Enable micro break timer"
@@ -150,73 +150,78 @@ msgstr "Aktivera daglig gränstidtagare"
 
 #: contents/ui/config/ConfigTimers.qml:61
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: contents/ui/config/ConfigTimers.qml:74
 msgctxt ""
 "Whether timers should be laid out horizontally/vertically/automatically"
 msgid "Orientation"
-msgstr ""
+msgstr "Orientering"
 
 #: contents/ui/config/ConfigTimers.qml:83
 msgid "Auto"
-msgstr ""
+msgstr "Automatisk"
 
 #: contents/ui/config/ConfigTimers.qml:84
 msgid "Horizontal"
-msgstr ""
+msgstr "Horisontell"
 
 #: contents/ui/config/ConfigTimers.qml:85
 msgid "Vertical"
-msgstr ""
+msgstr "Vertikal"
 
 #: contents/ui/config/ConfigTimers.qml:93
 msgid "Single timer display mode"
-msgstr ""
+msgstr "Visningsläge med en tidtagare"
 
 #: contents/ui/config/ConfigTimers.qml:95
 msgid ""
 "Check this if you want to display only a single timer at a time. Click or "
 "drag on it with a pointer if you want to switch to another timer."
 msgstr ""
+"Markera om du bara vill visa en enda tidtagare åt gången. Klicka eller dra på"
+" den med en pekare om du vill byta till en annan tidtagare."
 
 #: contents/ui/config/ConfigTimers.qml:108
 msgid "Switch timers periodically"
-msgstr ""
+msgstr "Byt tidtagare periodiskt"
 
 #: contents/ui/config/ConfigTimers.qml:110
 msgid ""
 "Check this if you want to switch to another timer after given amount of "
 "seconds."
 msgstr ""
+"Markera om du vill byta till en annan tidtagare efter ett givet antal"
+" sekunder."
 
 #: contents/ui/config/ConfigTimers.qml:132
-#, fuzzy
 msgid "Periodical switching interval in seconds"
-msgstr "Uppdateringsintervall i sekunder"
+msgstr "Periodiskt bytesintervall i sekunder"
 
 #: contents/ui/config/ConfigTimers.qml:143
 msgid "Switch timers conditionally"
-msgstr ""
+msgstr "Byt tidtagare villkorligt"
 
 #: contents/ui/config/ConfigTimers.qml:145
 msgid ""
 "Check this if you want to switch to another timer when a condition is met."
 msgstr ""
+"Markera om du vill byta till en annan tidtagare efter ett villkor är uppfyllt."
 
 #: contents/ui/config/ConfigTimers.qml:157
 msgid "Switch on a difference between elapsed and limit time"
-msgstr ""
+msgstr "Byt vid skillnad mellan förfluten tid och gränstid"
 
 #: contents/ui/config/ConfigTimers.qml:159
 msgid ""
 "Check this if you want to automatically switch to a timer closest to being "
 "overdue."
 msgstr ""
+"Markera om du vill byta automatiskt till tidtagaren närmast att löpa ut."
 
 #: contents/ui/config/ConfigTimers.qml:177
 msgid "Difference between elapsed and limit time"
-msgstr ""
+msgstr "Skillnad mellan förfluten tid och gränstid"
 
 #: contents/ui/config/ConfigTimers.qml:199
 msgid "Detect Workrave configuration changes"
@@ -259,13 +264,15 @@ msgstr "Beräkna om miniprogrammets storlek"
 
 #: contents/ui/main.qml:571
 msgid "Issue with qdbus"
-msgstr ""
+msgstr "Problem med qdbus"
 
 #: contents/ui/main.qml:572
 msgid ""
 "Please make sure that the command `qdbus org.workrave.Workrave` works "
 "without issues in your terminal."
 msgstr ""
+"Säkerställ att kommandot `qdbus org.workrave.Workrave` fungerar utan problem"
+" i din terminal."
 
 #: contents/ui/main.qml:574
 msgid "Workrave not installed"
@@ -285,11 +292,11 @@ msgstr "Lägg till en tidtagare i miniprogrammets inställningar."
 
 #: rc.cpp:1
 msgid "Workrave Applet"
-msgstr ""
+msgstr "Miniprogrammet Workrave"
 
 #: rc.cpp:2
 msgid "Displays timers of Workrave"
-msgstr ""
+msgstr "Visar tidtagarna i Workrave"
 
 #, kde-format
 #~ msgid "Height multiplier"
