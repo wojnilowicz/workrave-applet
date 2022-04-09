@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3] - 2022-04-09
+### Added
+- Vertical and single timer layouts
+- Option for timers to display an icon
+- Option for timers to display only significant time value
+- Warning if qdbus is not behaving as expected
+
+### Changed
+- Timer font grows with the timer progress bar
+
+### Fixed
+- Some settings were not applied after pressing the apply button
+
 ## [v0.2] - 2020-08-01
 ### Added
 - Translations for Catalan, Danish, Spanish, French, Italian, Portuguese, Brazilian Portuguese, Slovenian, Swedish, Ukrainian
