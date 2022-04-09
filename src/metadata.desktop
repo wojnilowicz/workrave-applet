@@ -1,8 +1,22 @@
 [Desktop Entry]
 Name=Workrave Applet
-Name[pl]=Applet Workrave
+Name[ca]=Miniaplicació Workrave
+Name[es]=Miniaplicación de Workrave
+Name[fr]=Applet Workrave
+Name[it]=Applet Workrave
+Name[pl]=Aplet Workrave
+Name[pt_BR]=Miniaplicativo Workrave
+Name[sv]=Miniprogrammet Workrave
+Name[uk]=Аплет Workrave
 Comment=Displays timers of Workrave
+Comment[ca]=Mostra els temporitzadors del Workrave
+Comment[es]=Muestra temporizadores de Workrave
+Comment[fr]=Afficher les minuteurs de Workrave
+Comment[it]=Mostra timer di Workrave
 Comment[pl]=Wyświetla czasomierze Workrave
+Comment[pt_BR]=Mostra temporizadores do Workrave
+Comment[sv]=Visar tidtagarna i Workrave
+Comment[uk]=Показує таймери Workrave
 Type=Service
 X-KDE-ParentApp=
 X-KDE-PluginInfo-Author=Łukasz Wojniłowicz
