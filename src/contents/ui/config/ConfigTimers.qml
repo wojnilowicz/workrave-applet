@@ -24,6 +24,8 @@ ColumnLayout {
 
   property alias cfg_conditionalSwitch: conditionalSwitch.checked
   property alias cfg_timeDifferenceSwitch: timeDifferenceSwitch.checked
+  property alias cfg_idleTimeSwitch: idleTimeSwitch.checked
+  property alias cfg_nonIdleTimeSwitch: nonIdleTimeSwitch.checked
   property alias cfg_timeDifferenceSwitchDifference: timeDifferenceSwitchDifference.value
 
   property alias cfg_detectWorkraveConfigurationChanges: detectWorkraveConfigurationChanges.checked
@@ -178,6 +180,23 @@ ColumnLayout {
                 }
               }
 
+              CheckBox {
+                id: idleTimeSwitch
+                enabled: conditionalSwitch.checked
+                text: i18n("Switch timers during idle time")
+                ToolTip {
+                  text: i18n("Check this if you want to automatically switch to the most informative timer during idle time.")
+                }
+              }
+
+              CheckBox {
+                id: nonIdleTimeSwitch
+                enabled: conditionalSwitch.checked
+                text: i18n("Switch timers during non-idle time")
+                ToolTip {
+                  text: i18n("Check this if you want to automatically switch to the most informative timer during non-idle time.")
+                }
+              }
             }
           }
         }

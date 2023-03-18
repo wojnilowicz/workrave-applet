@@ -56,6 +56,8 @@ Item {
   property bool periodicalSwitchEnabled: plasmoid.configuration.periodicalSwitch
   property bool conditionalSwitchEnabled: plasmoid.configuration.conditionalSwitch
   property bool timeDifferenceSwitchEnabled: plasmoid.configuration.timeDifferenceSwitch
+  property bool idleTimeSwitchEnabled: plasmoid.configuration.idleTimeSwitch
+  property bool nonIdleTimeSwitchEnabled: plasmoid.configuration.nonIdleTimeSwitch
   onTimersOrientationModeChanged: updatePlasmoidAfterConfiguration()
   onSingleTimerModeEnabledChanged: updatePlasmoidAfterConfiguration()
   onPeriodicalSwitchEnabledChanged: updatePlasmoidAfterConfiguration()
@@ -200,66 +202,100 @@ Item {
     repeat: true
     running: plasmoid.configuration.conditionalSwitch
     onTriggered: {
-      if (plasmoid.configuration.timeDifferenceSwitch) {
-        let timerOffsetFromLimit = []
-        let isIdling = false
-        let leastResetDuration = 0
-        let indexOfLeastResetDuration = -1
-        let leastRemainingOffset = 0
-        let indexOfLeastRemainingOffset = -1
-        for (let i = 0; i < timersModel.count; ++i) {
-          let timer = timersModel.get(i)
+      let resetTimeForIndexDuringIdleTime = 0
+      let resetTimeForIndexDuringNonIdleTime = 0
+      let indexDuringIdleTime = -1
+      let overdueTimeForIndexDuringIdleTime = 0
+      let overdueTimeForIndexDuringNonIdleTime = 0
+      let indexDuringNonIdleTime = -1
+      for (let i = 0; i < timersModel.count; ++i) {
+        let timer = timersModel.get(i)
 
-          let timeOffset = timer.limit - timer.elapsed
-          timerOffsetFromLimit[i] = timeOffset
-          if (timeOffset < leastRemainingOffset || indexOfLeastRemainingOffset == -1) {
-            leastRemainingOffset = timeOffset
-            indexOfLeastRemainingOffset = i
-          }
+        let overdueTime = timer.limit - timer.elapsed
 
-          if (timer.idle)
-            isIdling = true
-
-          if (timeOffset < 0 &&
-              (leastResetDuration > timer.auto_reset || indexOfLeastResetDuration == -1)) {
-            leastResetDuration = timer.auto_reset
-            indexOfLeastResetDuration = i
-          }
-        }
-        // if the user isn't interacting then switch to a timer that'll reset the soonest
-        if (isIdling &&
-            indexOfLeastResetDuration != -1) {
-          if (listView.currentVisibleIndex() !== indexOfLeastResetDuration) {
-            listView.switchWithAnimation(indexOfLeastResetDuration, ListView.Contain)
-            indexToSwitchWithDelay = -1
-          }
-        } else if (leastRemainingOffset < plasmoid.configuration.timeDifferenceSwitchDifference) {
-          periodicalSwitchTimer.running = false
-          if (previousVisibleIndex == -1)
-            previousVisibleIndex = listView.currentIndex
-
-          if (listView.currentVisibleIndex() !== indexOfLeastRemainingOffset)  {
-            // timer with the least remaining offset has been already switched to but...
-            // the user switched it manually to some other timer for a while so...
-            // switch to it back after 5000 miliseconds
-            if (indexToSwitchWithDelay == indexOfLeastRemainingOffset) {
-              switchTimerWithDelay.interval = 5000
-            } else {
-              switchTimerWithDelay.interval = 0
-              indexToSwitchWithDelay = indexOfLeastRemainingOffset
+        if (!timer.idle) {
+          if (plasmoid.configuration.timeDifferenceSwitch &&
+            overdueTime < plasmoid.configuration.timeDifferenceSwitchDifference &&
+            (overdueTime < overdueTimeForIndexDuringNonIdleTime ||
+            indexDuringNonIdleTime == -1)) {
+            resetTimeForIndexDuringNonIdleTime = timer.auto_reset
+            overdueTimeForIndexDuringNonIdleTime = overdueTime
+            indexDuringNonIdleTime = i
+          } else if (plasmoid.configuration.nonIdleTimeSwitch) {
+            if (indexDuringNonIdleTime == -1 ||
+                // pick a timer if it's overdue and the current one isn't
+                (overdueTime <= 0 && overdueTimeForIndexDuringNonIdleTime > 0) ||
+                /* pick a timer if the current one is also overdue
+                   but it'll take less time to reset */
+                (overdueTime <= 0 && overdueTimeForIndexDuringNonIdleTime <= 0 &&
+                timer.auto_reset > resetTimeForIndexDuringNonIdleTime) ||
+                // pick a timer that satisfies time difference
+                (plasmoid.configuration.timeDifferenceSwitch &&
+                overdueTime < plasmoid.configuration.timeDifferenceSwitchDifference &&
+                overdueTime < overdueTimeForIndexDuringNonIdleTime) ||
+                // pick the most overdue timer
+                overdueTime < overdueTimeForIndexDuringNonIdleTime) {
+              resetTimeForIndexDuringNonIdleTime = timer.auto_reset
+              overdueTimeForIndexDuringNonIdleTime = overdueTime
+              indexDuringNonIdleTime = i
             }
-
-            switchTimerWithDelay.running = true
-          } else {
-            switchTimerWithDelay.running = false
           }
-          // switch to a timer that was displayed before triggering a condition
-        } else if (previousVisibleIndex !== -1) {
-          listView.switchWithAnimation(previousVisibleIndex, ListView.Contain)
-          previousVisibleIndex = -1
-          periodicalSwitchTimerController()
+        } else if (plasmoid.configuration.idleTimeSwitch) {
+          // exclude fully reset timers
+          if (timer.elapsed !== 0) {
+            // pick any timer in order to have something for a comparison
+            if (indexDuringIdleTime == -1 ||
+                // pick a timer if it's overdue and the current one isn't
+                (overdueTimeForIndexDuringIdleTime > 0 && overdueTime <= 0) ||
+                /* pick a timer if the current one is also overdue
+                   but it'll reset sooner */
+                (overdueTimeForIndexDuringIdleTime <= 0 && overdueTime <= 0 &&
+                 resetTimeForIndexDuringIdleTime <= timer.auto_reset) ||
+                 /* pick a timer that'll be overdue sooner than current one
+                    when fully reset */
+                 resetTimeForIndexDuringIdleTime >= overdueTime ||
+                 // pick a timer if it'll reset sooner
+                 resetTimeForIndexDuringIdleTime >= timer.auto_reset) {
+              resetTimeForIndexDuringIdleTime = timer.auto_reset
+              overdueTimeForIndexDuringIdleTime = overdueTime
+              indexDuringIdleTime = i
+            }
+          }
         }
       }
+
+      if (indexDuringIdleTime != -1) {
+        if (listView.currentVisibleIndex() !== indexDuringIdleTime) {
+          listView.switchWithAnimation(indexDuringIdleTime, ListView.Contain)
+          indexToSwitchWithDelay = -1
+        }
+      } else if (indexDuringNonIdleTime != -1) {
+        periodicalSwitchTimer.running = false
+        if (previousVisibleIndex == -1)
+          previousVisibleIndex = listView.currentIndex
+
+        if (listView.currentVisibleIndex() !== indexDuringNonIdleTime)  {
+          // timer with the least remaining offset has been already switched to but...
+          // the user switched it manually to some other timer for a while so...
+          // switch to it back after 5000 milliseconds
+          if (indexToSwitchWithDelay == indexDuringNonIdleTime) {
+            switchTimerWithDelay.interval = 5000
+          } else {
+            switchTimerWithDelay.interval = 0
+            indexToSwitchWithDelay = indexDuringNonIdleTime
+          }
+
+          switchTimerWithDelay.running = true
+        } else {
+          switchTimerWithDelay.running = false
+        }
+        // switch to a timer that was displayed before triggering a condition
+      } else if (previousVisibleIndex !== -1) {
+        listView.switchWithAnimation(previousVisibleIndex, ListView.Contain)
+        previousVisibleIndex = -1
+        periodicalSwitchTimerController()
+      }
+
     }
   }
 
@@ -557,6 +593,7 @@ Item {
           interval = 36000
         else
           interval = 0
+        updatePlasmoidAfterConfiguration()
       } else {
         isWorkraveInstalled = false
         interval = 1000
