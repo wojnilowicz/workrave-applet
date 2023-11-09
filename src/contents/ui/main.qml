@@ -419,8 +419,8 @@ Item {
           color: plasmoid.configuration.fontColor
           anchors.centerIn: parent
           font: {
-            let fontHeightFromBarHeight = Math.floor(timeComponent.height * model.font_height_ratio)
-            let fontHeightFromBarWidth = Math.floor(timeComponent.width * model.font_width_ratio)
+            let fontHeightFromBarHeight = Math.floor(timerComponent.height * model.font_height_ratio)
+            let fontHeightFromBarWidth = Math.floor(timerComponent.width * model.font_width_ratio)
             // calculated font size can be zero due to the progress bar having zero size at the begining
             let fontHeightFromBar = Math.min(fontHeightFromBarHeight, fontHeightFromBarWidth)
             if (!fontHeightFromBar)
