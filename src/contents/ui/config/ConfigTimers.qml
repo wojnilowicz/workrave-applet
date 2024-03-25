@@ -1,35 +1,37 @@
 /*
-    SPDX-FileCopyrightText: 2020-2022 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+    SPDX-FileCopyrightText: 2020-2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick 6.0
+import QtQuick.Controls
+import QtQuick.Layouts
+import org.kde.kcmutils as KCM
+
+KCM.SimpleKCM {
+    property alias cfg_microTimer: microTimer.checked
+    property alias cfg_restTimer: restTimer.checked
+    property alias cfg_dailyTimer: dailyTimer.checked
+
+    property alias cfg_timersOrientation: timersOrientation.currentIndex
+    property alias cfg_singleTimerMode: singleTimerMode.checked
+
+    property alias cfg_periodicalSwitch: periodicalSwitch.checked
+    property alias cfg_periodicalSwitchInterval: periodicalSwitchInterval.value
+
+    property alias cfg_conditionalSwitch: conditionalSwitch.checked
+    property alias cfg_timeDifferenceSwitch: timeDifferenceSwitch.checked
+    property alias cfg_idleTimeSwitch: idleTimeSwitch.checked
+    property alias cfg_nonIdleTimeSwitch: nonIdleTimeSwitch.checked
+    property alias cfg_timeDifferenceSwitchDifference: timeDifferenceSwitchDifference.value
+
+    property alias cfg_detectWorkraveConfigurationChanges: detectWorkraveConfigurationChanges.checked
+    property alias cfg_updateInterval: updateInterval.value
 
 ColumnLayout {
   id: main
   spacing: 6
-
-  property alias cfg_microTimer: microTimer.checked
-  property alias cfg_restTimer: restTimer.checked
-  property alias cfg_dailyTimer: dailyTimer.checked
-
-  property alias cfg_timersOrientation: timersOrientation.currentIndex
-  property alias cfg_singleTimerMode: singleTimerMode.checked
-
-  property alias cfg_periodicalSwitch: periodicalSwitch.checked
-  property alias cfg_periodicalSwitchInterval: periodicalSwitchInterval.value
-
-  property alias cfg_conditionalSwitch: conditionalSwitch.checked
-  property alias cfg_timeDifferenceSwitch: timeDifferenceSwitch.checked
-  property alias cfg_idleTimeSwitch: idleTimeSwitch.checked
-  property alias cfg_nonIdleTimeSwitch: nonIdleTimeSwitch.checked
-  property alias cfg_timeDifferenceSwitchDifference: timeDifferenceSwitchDifference.value
-
-  property alias cfg_detectWorkraveConfigurationChanges: detectWorkraveConfigurationChanges.checked
-  property alias cfg_updateInterval: updateInterval.value
 
   GroupBox {
     Layout.fillWidth: true
@@ -244,4 +246,5 @@ ColumnLayout {
   }
 
   Item {Layout.fillHeight: true} // <-- filler here
+}
 }

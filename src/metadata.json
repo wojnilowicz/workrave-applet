@@ -1,0 +1,40 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "lukasz.wojnilowicz@gmail.com",
+                "Name": "Łukasz Wojniłowicz"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Displays timers of Workrave",
+        "Description[ca]": "Mostra els temporitzadors del Workrave",
+        "Description[es]": "Muestra temporizadores de Workrave",
+        "Description[fr]": "Afficher les minuteurs de Workrave",
+        "Description[it]": "Mostra timer di Workrave",
+        "Description[pl]": "Wyświetla czasomierze Workrave",
+        "Description[pt_BR]": "Mostra temporizadores do Workrave",
+        "Description[sv]": "Visar tidtagarna i Workrave",
+        "Description[uk]": "Показує таймери Workrave",
+        "Icon": "/workrave-sheep.svg",
+        "Id": "org.kde.workraveApplet",
+        "License": "GPLv2",
+        "Name": "Workrave Applet",
+        "Name[ca]": "Miniaplicació Workrave",
+        "Name[es]": "Miniaplicación de Workrave",
+        "Name[fr]": "Applet Workrave",
+        "Name[it]": "Applet Workrave",
+        "Name[pl]": "Aplet Workrave",
+        "Name[pt_BR]": "Miniaplicativo Workrave",
+        "Name[sv]": "Miniprogrammet Workrave",
+        "Name[uk]": "Аплет Workrave",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "0.4-alpha.1",
+        "Website": "https://github.com/wojnilowicz/workrave-applet"
+    },
+    "X-KDE-ParentApp": "",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

@@ -1,19 +1,21 @@
 /*
-    SPDX-FileCopyrightText: 2020-2022 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+    SPDX-FileCopyrightText: 2020-2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
+import QtQuick 6.0
+import QtQuick.Controls
+import QtQuick.Layouts
+import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasma5support as Plasma5Support
+import org.kde.kirigami as Kirigami
 
-Item {
+PlasmoidItem {
   id: main
   anchors.fill: parent
-  Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+  preferredRepresentation: fullRepresentation
 
   property var workraveConfigKeys: [ "limit", "auto_reset" ]
   property var workraveTimerMethods: [ "GetTimerElapsed", "GetTimerOverdue", "GetTimerIdle" ]
@@ -79,8 +81,6 @@ Item {
   onTimersExtraHeightChanged: updatePlasmoidAfterConfiguration()
   onTimersSpacingChanged: updatePlasmoidAfterConfiguration()
 
-  property bool isKF5_5_70_0: false
-
   property bool isWorkraveInstalled: false
   property int widgetWidth : 0
   property int widgetHeight : 0
@@ -116,15 +116,15 @@ Item {
 
   Connections {
     target: plasmoid
-    onUserConfiguringChanged: {
+    function onUserConfiguringChanged() {
       updatePlasmoidAfterConfiguration()
     }
 
-    onLocationChanged: {
+    function onLocationChanged() {
       updatePlasmoidAfterConfiguration()
     }
 
-    onFormFactorChanged: {
+    function onFormFactorChanged() {
       updatePlasmoidAfterConfiguration()
     }
   }
@@ -134,8 +134,8 @@ Item {
       return
 
     if (!plasmoid.configuration.useCustomFont) {
-      dynamicTextMetrics.font = PlasmaCore.Theme.defaultFont
-      staticTextMetrics.font = PlasmaCore.Theme.defaultFont
+      dynamicTextMetrics.font = Kirigami.Theme.defaultFont
+      staticTextMetrics.font = Kirigami.Theme.defaultFont
     } else {
       dynamicTextMetrics.font = plasmoid.configuration.customFont
       staticTextMetrics.font = plasmoid.configuration.customFont
@@ -450,11 +450,26 @@ Item {
   ListView {
     id: listView
     anchors.verticalCenter: parent.verticalCenter
+    anchors.horizontalCenter: parent.horizontalCenter
     clip: plasmoid.configuration.singleTimerMode ? true : false
     snapMode: ListView.SnapToItem
     keyNavigationWraps: true
-    width: parent.width
-    height: Math.min(parent.height, parent.width * widgetHeight/widgetWidth)
+    width: {
+      let horizontalPadding = 0
+      if (parent.parent && plasmoid.location === PlasmaCore.Types.Floating) {
+        horizontalPadding = parent.parent.leftPadding + parent.parent.rightPadding
+      }
+      return parent.width - horizontalPadding
+    }
+    height: {
+      let horizontalPadding = 0
+      let verticalPadding = 0
+      if (parent.parent && plasmoid.location === PlasmaCore.Types.Floating) {
+        horizontalPadding = parent.parent.leftPadding + parent.parent.rightPadding
+        verticalPadding = parent.parent.topPadding + parent.parent.bottomPadding
+      }
+      return Math.min(parent.height - verticalPadding, (parent.width - horizontalPadding) * widgetHeight/widgetWidth)
+    }
     contentWidth: this.width * (widgetContentWidth / widgetWidth)
     contentHeight: this.height * (widgetContentHeight / widgetHeight)
     spacing: plasmoid.configuration.timersSpacing
@@ -486,12 +501,12 @@ Item {
     id: timersModel
   }
 
-  PlasmaCore.DataSource {
+  Plasma5Support.DataSource {
     id: workraveConfigDBus
     engine: 'executable'
     interval: plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
 
-    onNewData: {
+    onNewData: function(sourceName, data) {
       let isValueUnchanged = false
       for (let i = 0; i < timersModel.count; ++i) {
         let timer = timersModel.get(i)
@@ -503,7 +518,7 @@ Item {
           if (!sourceName.includes('/' + key))
             continue
           let value = parseInt(data.stdout.split('\n')[0])
-          if (timer[key] == value && value) {
+          if (timer[key] === value && value) {
             isValueUnchanged = true
             continue
           }
@@ -512,8 +527,7 @@ Item {
         }
       }
 
-      if (!isKF5_5_70_0)
-        interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
+      interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
 
       if (isValueUnchanged)
         return
@@ -523,18 +537,18 @@ Item {
         if (timersModel.get(i).limit)
           limitsCount += 1
 
-      if (limitsCount == timersModel.count)
+      if (limitsCount === timersModel.count)
         action_adjustSize()
     }
 
   }
 
-  PlasmaCore.DataSource {
+  Plasma5Support.DataSource {
     id: workraveDataDBus
     engine: 'executable'
     interval: updateIntervalInMilliseconds
 
-    onNewData: {
+    onNewData: function(sourceName, data) {
       for (let workraveTimerMethod in propertyNameFromMethod) {
         if (!sourceName.includes(workraveTimerMethod))
           continue
@@ -563,36 +577,29 @@ Item {
     source: '../workrave-sheep.svg'
   }
 
-
   PlasmaCore.ToolTipArea {
     id: placeholderTooltip
     anchors.fill: parent
     icon: 'dialog-warning'
   }
 
-
-  PlasmaCore.DataSource {
+  Plasma5Support.DataSource {
     id: workraveCheckDBus
     engine: 'executable'
     interval: 0
-    connectedSources: ["qdbus org.workrave.Workrave"]
-    onNewData: {
-      if (!interval)
-        return
+    connectedSources: [dbusExecutableName + " org.workrave.Workrave"]
+    onNewData: function(sourceName, data) {
       if (data.stdout.length) {
+        if (isWorkraveInstalled)
+          return
         isWorkraveInstalled = true
         workraveDataDBus.interval = updateIntervalInMilliseconds
         workraveConfigDBus.interval = plasmoid.configuration.detectWorkraveConfigurationChanges ? updateIntervalInMilliseconds : 0
 
         reloadAppletTimers()
         plasmoid.userConfiguringChanged.connect(userConfiguringChanged)
-        plasmoid.setAction('reloadWorkraveConfiguration', i18n("Reload Workrave configuration"), 'view-refresh');
-        plasmoid.setAction('adjustSize', i18n("Recalculate applet size"), 'zoom-fit-width');
 
-        if (isKF5_5_70_0)
-          interval = 36000
-        else
-          interval = 0
+        interval = 100000 // Must be non-zero to not crash when entering edit mode of the plasmoid
         updatePlasmoidAfterConfiguration()
       } else {
         isWorkraveInstalled = false
@@ -621,23 +628,53 @@ Item {
 
   }
 
-  PlasmaCore.DataSource {
+  Plasma5Support.DataSource {
     id: kdeFrameworksCheck
     engine: 'executable'
     interval: 0
-    connectedSources: ["kf5-config --kde-version"]
-    onNewData: {
-      let kf5version = data.stdout.trim()
-      switch (kf5version) {
-        case "5.70.0":
-          isKF5_5_70_0 = true
-          console.warn("Running on buggy KF5 5.70.0. Expect deficiencies due to https://bugs.kde.org/show_bug.cgi?id=422973")
-          break
+    connectedSources: ["kinfo | grep 'KDE Frameworks' | rev | cut -f1 -d' ' | rev"]
+    onNewData: function(sourceName, data) {
+      let kf6version = data.stdout.trim()
+      switch (kf6version) {
         default:
           break;
       }
-      workraveCheckDBus.interval = 1
+      qDBusNameCheck.interval = 1
+    }
+  }
 
+  Plasma5Support.DataSource {
+    id: qDBusNameCheck
+    engine: 'executable'
+    interval: 0
+    connectedSources: ["qdbus"]
+    onNewData: function(sourceName, data) {
+      if (!interval)
+        return
+      if (data.stderr.length > 0) {
+        qDBusQt6NameCheck.interval = 1
+      } else {
+        dbusExecutableName = "qdbus"
+        workraveCheckDBus.interval = 1
+      }
+      interval = 0
+    }
+  }
+
+  Plasma5Support.DataSource {
+    id: qDBusQt6NameCheck
+    engine: 'executable'
+    interval: 0
+    connectedSources: ["qdbus-qt6"]
+    onNewData: function(sourceName, data) {
+      if (!interval)
+        return
+      if (data.stderr.length > 0) {
+      } else {
+        dbusExecutableName = "qdbus-qt6"
+      }
+      workraveCheckDBus.interval = 1
+      interval = 0
     }
   }
 
@@ -645,7 +682,28 @@ Item {
 
   }
 
+  Plasmoid.contextualActions: [
+    PlasmaCore.Action {
+        text: i18n("Reload Workrave configuration")
+        icon.name: 'view-refresh'
+        priority: Plasmoid.LowPriorityAction
+        visible: true
+        enabled: true
+        onTriggered: action_reloadWorkraveConfiguration()
+    },
+    PlasmaCore.Action {
+      text: i18n("Recalculate applet size")
+      icon.name: 'zoom-fit-width'
+      priority: Plasmoid.LowPriorityAction
+      visible: true
+      enabled: true
+      onTriggered: action_adjustSize()
+    }
+  ]
+
   function reloadAppletTimers() {
+    fixMissingQDBus(workraveDataDBus)
+    fixMissingQDBus(workraveConfigDBus)
 
     let newTimerIds = []
     if (plasmoid.configuration.microTimer)
@@ -705,7 +763,16 @@ Item {
     workraveConfigDBus.interval = 1
   }
 
-  property string dbusDataCommand : 'qdbus org.workrave.Workrave  /org/workrave/Workrave/Core org.workrave.CoreInterface.{workraveTimerMethod} "{workraveTimerName}"'
+  property string dbusExecutableName : ''
+  property string dbusDataCommand : dbusExecutableName + ' org.workrave.Workrave  /org/workrave/Workrave/Core org.workrave.CoreInterface.{workraveTimerMethod} "{workraveTimerName}"'
+
+  function fixMissingQDBus(dataSource) {
+    dataSource.connectedSources.forEach((element, index) => {
+      if (!dataSource.connectedSources[index].startsWith(dbusExecutableName)) {
+      dataSource.connectedSources[index] = dbusExecutableName + element
+       }
+    })
+  }
 
   function addDataSource(timerId) {
     let workraveTimerName = timerId
@@ -721,7 +788,7 @@ Item {
       let dbusSpecificCommand = dbusDataCommand.replace('{workraveTimerMethod}', workraveTimerMethod).replace('{workraveTimerName}', workraveTimerName)
 
       let index = workraveDataDBus.connectedSources.indexOf(dbusSpecificCommand)
-      if (index != -1) {
+      if (index !== -1) {
         // connectedSources is messed up if used splice directly on it, so workaround it
         let connectedSourcesCopy = JSON.parse(JSON.stringify( workraveDataDBus.connectedSources ))
         connectedSourcesCopy.splice(index, 1)
@@ -730,7 +797,7 @@ Item {
     }
   }
 
-  property string dbusConfigCommand : 'qdbus org.workrave.Workrave  /org/workrave/Workrave/Core org.workrave.ConfigInterface.GetInt /timers/{workraveConfigName}/{workraveConfigKey}'
+  property string dbusConfigCommand : dbusExecutableName + ' org.workrave.Workrave  /org/workrave/Workrave/Core org.workrave.ConfigInterface.GetInt /timers/{workraveConfigName}/{workraveConfigKey}'
 
   function addConfigSource(timerId) {
     let workraveConfigName = configTimerNamesFromTimerNames[timerId]
@@ -746,7 +813,7 @@ Item {
     for (let workraveConfigKey of workraveConfigKeys) {
       let dbusSpecificCommand = dbusConfigCommand.replace('{workraveConfigName}', workraveConfigName).replace('{workraveConfigKey}', workraveConfigKey)
       let index = workraveConfigDBus.connectedSources.indexOf(dbusSpecificCommand)
-      if (index != -1) {
+      if (index !== -1) {
         // connectedSources is messed up if used splice directly on it, so workaround it
         let connectedSourcesCopy = JSON.parse(JSON.stringify( workraveConfigDBus.connectedSources ))
         connectedSourcesCopy.splice(index, 1)
@@ -778,7 +845,7 @@ Item {
 
   function removeModelItem(timerId) {
     for (let i = 0; i < timersModel.count; ++i) {
-      if (timersModel.get(i).id == timerId) {
+      if (timersModel.get(i).id === timerId) {
         timersModel.remove(i)
         break
       }
@@ -818,23 +885,23 @@ Item {
   function minimumPlasmoidSize() {
     switch (plasmoid.location) {
       case PlasmaCore.Types.Floating:
-        let iconSizes = PlasmaCore.Units.iconSizes.small
-        if (PlasmaCore.Units.devicePixelRatio == 1.25) {
+        let iconSizes = Kirigami.Units.iconSizes.small
+        if (Kirigami.Units.devicePixelRatio === 1.25) {
           // this ensures that the mimimum size on 125 % scaling is 52x52 as tested during runtime
-          iconSizes *= PlasmaCore.Units.devicePixelRatio
+          iconSizes *= Kirigami.Units.devicePixelRatio
           console.warn("Working around minimum applet size calculation on 125% display scaling")
         }
 
         // got topPadding and bottomPadding from https://invent.kde.org/plasma/plasma-workspace/-/raw/master/components/containmentlayoutmanager/qml/BasicAppletContainer.qml
-        // infered 4 * PlasmaCore.Units.iconSizes.small from https://invent.kde.org/plasma/plasma-desktop/-/blob/master/containments/desktop/package/contents/ui/FolderView.qml
-        let minimumSize = 4 * iconSizes - Plasmoid.parent.topPadding - Plasmoid.parent.bottomPadding
+        // inferred 4 * PlasmaCore.Units.iconSizes.small from https://invent.kde.org/plasma/plasma-desktop/-/blob/master/containments/desktop/package/contents/ui/FolderView.qml
+        let minimumSize = 4 * iconSizes - main.parent.topPadding - main.parent.bottomPadding
         return Qt.size(minimumSize, minimumSize)
       case PlasmaCore.Types.TopEdge:
       case PlasmaCore.Types.BottomEdge:
-        return Qt.size(0, Plasmoid.parent.height)
+        return Qt.size(0, main.parent.height)
       case PlasmaCore.Types.LeftEdge:
       case PlasmaCore.Types.RightEdge:
-        return Qt.size(Plasmoid.parent.width, 0)
+        return Qt.size(main.parent.width, 0)
       default:
         return Qt.size(0, 0)
     }
@@ -934,8 +1001,8 @@ Item {
         // If one wants to resize Plasmoid from height 104 to 105 then it fails...
         // ...because the closest next height is 120.
         // This is to ensure that we're always resizing to a valid height.
-        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
         maximumItemHeight += extraPixelsToFitSizeResolution
         // doesn't have to fit the resolution because it's dedicated for the content height
         itemsHeight = maximumItemHeight * timerStringHeights.length
@@ -954,8 +1021,8 @@ Item {
           pixelsOverMinimumSize = 0
         }
 
-        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
 
         if (extraPixelsToFitSizeResolution > 0) {
           maximumItemHeight += Math.floor(extraPixelsToFitSizeResolution / timerStringHeights.length)
@@ -977,8 +1044,8 @@ Item {
         pixelsOverMinimumSize = 0
       }
 
-      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
 
       maximumItemWidth += extraPixelsToFitSizeResolution
       itemBarWidth += extraPixelsToFitSizeResolution
@@ -1007,8 +1074,8 @@ Item {
 
       // will never be negative so no need to check that
       pixelsOverMinimumSize = newMinimumHeight - minPlasmoidSize.height
-      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+      pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+      extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
       newMinimumHeight += extraPixelsToFitSizeResolution
 
       widthFromIcon = newMinimumHeight
@@ -1032,8 +1099,8 @@ Item {
         // will never be negative so no need to check that
         pixelsOverMinimumSize = maximumItemWidth - minPlasmoidSize.width
 
-        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
 
         maximumItemWidth += extraPixelsToFitSizeResolution
         for (let i = 0; i < itemWidths.length; ++i) {
@@ -1054,8 +1121,8 @@ Item {
           }
         }
 
-        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % PlasmaCore.Units.iconSizes.small
-        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : PlasmaCore.Units.iconSizes.small - pixelsNotFittingSizeResolution
+        pixelsNotFittingSizeResolution = pixelsOverMinimumSize % Kirigami.Units.iconSizes.small
+        extraPixelsToFitSizeResolution = !pixelsNotFittingSizeResolution ? 0 : Kirigami.Units.iconSizes.small - pixelsNotFittingSizeResolution
         itemsWidth += extraPixelsToFitSizeResolution
 
         while(extraPixelsToFitSizeResolution >0) {

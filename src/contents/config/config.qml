@@ -1,11 +1,11 @@
 /*
-    SPDX-FileCopyrightText: 2020 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+    SPDX-FileCopyrightText: 2020-2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.7
-import org.kde.plasma.configuration 2.0
+import QtQuick 6.0
+import org.kde.plasma.configuration
 
 ConfigModel {
     ConfigCategory {

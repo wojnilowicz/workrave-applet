@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: workrave-applet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
-"POT-Creation-Date: 2022-02-13 10:18+0100\n"
+"POT-Creation-Date: 2024-03-31 17:46+0200\n"
 "PO-Revision-Date: 2022-04-12 13:46+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <>\n"
@@ -25,197 +25,193 @@ msgstr "Tijdklokken"
 msgid "Appearance"
 msgstr "Vormgeving"
 
-#: contents/ui/config/ConfigAppearance.qml:43
+#: contents/ui/config/ConfigAppearance.qml:46
 msgid "Display icon"
 msgstr "Pictogram tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:61
-#: contents/ui/config/ConfigAppearance.qml:123
+#: contents/ui/config/ConfigAppearance.qml:64
+#: contents/ui/config/ConfigAppearance.qml:126
 msgid "Height percentage"
 msgstr "Hoogte (in procent)"
 
-#: contents/ui/config/ConfigAppearance.qml:70
+#: contents/ui/config/ConfigAppearance.qml:73
 msgid "Display progress bar"
 msgstr "Voortgangsbalk tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:82
+#: contents/ui/config/ConfigAppearance.qml:85
 msgid "Background in normal state"
 msgstr "Achtergrond (gebruikelijk)"
 
-#: contents/ui/config/ConfigAppearance.qml:88
+#: contents/ui/config/ConfigAppearance.qml:91
 msgid "Background in overdue state"
 msgstr "Achtergrond (verstreken)"
 
-#: contents/ui/config/ConfigAppearance.qml:94
+#: contents/ui/config/ConfigAppearance.qml:97
 msgid "Foreground in activity state"
 msgstr "Voorgrond (activiteit)"
 
-#: contents/ui/config/ConfigAppearance.qml:100
+#: contents/ui/config/ConfigAppearance.qml:103
 msgid "Foreground at idle time in elapsed time"
 msgstr "Voorgrond (in rust - verstreken tijd)"
 
-#: contents/ui/config/ConfigAppearance.qml:106
+#: contents/ui/config/ConfigAppearance.qml:109
 msgid "Foreground at idle time"
 msgstr "Voorgrond (in rust)"
 
-#: contents/ui/config/ConfigAppearance.qml:139
+#: contents/ui/config/ConfigAppearance.qml:142
 msgid "Display label"
 msgstr "Label tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:152
+#: contents/ui/config/ConfigAppearance.qml:155
 msgid "Use custom font"
 msgstr "Aangepast lettertype gebruiken"
 
-#: contents/ui/config/ConfigAppearance.qml:166
+#: contents/ui/config/ConfigAppearance.qml:169
 msgid "Custom font..."
 msgstr "Aangepast lettertype…"
 
-#: contents/ui/config/ConfigAppearance.qml:181
+#: contents/ui/config/ConfigAppearance.qml:184
 msgid "Reset custom font to theme default."
 msgstr "Gebruik het standaardlettertype van het systeem."
 
-#: contents/ui/config/ConfigAppearance.qml:196
+#: contents/ui/config/ConfigAppearance.qml:199
 msgid "Color"
 msgstr "Kleur"
 
-#: contents/ui/config/ConfigAppearance.qml:201
+#: contents/ui/config/ConfigAppearance.qml:204
 msgid "Show only the most significant timer part"
 msgstr "Alleen het belangrijkste deel van klokken tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:203
+#: contents/ui/config/ConfigAppearance.qml:206
 msgid ""
 "Check this if you want to hide e.g. seconds left when there are still some "
 "minutes left."
 msgstr ""
-"Kruis aan als je minder belangrijke delen wilt verbergen, zoals de "
-"seconden."
+"Kruis aan als je minder belangrijke delen wilt verbergen, zoals de seconden."
 
-#: contents/ui/config/ConfigAppearance.qml:210
+#: contents/ui/config/ConfigAppearance.qml:213
 msgid "Show time units"
 msgstr "Tijdsaanduidingen tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:212
+#: contents/ui/config/ConfigAppearance.qml:215
 msgid "Check this if you want to show time units like: h, m, s in a timer."
 msgstr ""
 "Kruis aan als je tijdsaanduidingen, zoals u, m en s, op klokken wilt tonen."
 
-#: contents/ui/config/ConfigAppearance.qml:218
+#: contents/ui/config/ConfigAppearance.qml:221
 msgid "Show minus sign"
 msgstr "Minteken tonen"
 
-#: contents/ui/config/ConfigAppearance.qml:220
+#: contents/ui/config/ConfigAppearance.qml:223
 msgid "Check this if you want to show a minus sign if a timer is overdue."
 msgstr ""
-"Kruis aan als je een minteken wilt tonen bij klokken waarvan de tijd"
-" verstreken is."
+"Kruis aan als je een minteken wilt tonen bij klokken waarvan de tijd "
+"verstreken is."
 
-#: contents/ui/config/ConfigAppearance.qml:228
-#: contents/ui/config/ConfigTimers.qml:191
+#: contents/ui/config/ConfigAppearance.qml:231
+#: contents/ui/config/ConfigTimers.qml:212
 msgid "Misc"
 msgstr "Overig"
 
-#: contents/ui/config/ConfigAppearance.qml:248
+#: contents/ui/config/ConfigAppearance.qml:251
 msgid "Extra width per timer"
 msgstr "Aanvullende breedte per klok"
 
-#: contents/ui/config/ConfigAppearance.qml:265
+#: contents/ui/config/ConfigAppearance.qml:268
 msgid "Extra height per timer"
 msgstr "Aanvullende hoogte per klok"
 
-#: contents/ui/config/ConfigAppearance.qml:281
+#: contents/ui/config/ConfigAppearance.qml:284
 msgid "Spacing between timers"
 msgstr "Ruimte tussen klokken"
 
-#: contents/ui/config/ConfigAppearance.qml:290
+#: contents/ui/config/ConfigAppearance.qml:293
 msgid "Use Workrave colors"
 msgstr "Workrave-kleuren gebruiken"
 
-#: contents/ui/config/ConfigAppearance.qml:303
+#: contents/ui/config/ConfigAppearance.qml:306
 msgid "Use system theme colors"
 msgstr "Systeemkleuren gebruiken"
 
-#: contents/ui/config/ConfigTimers.qml:35
+#: contents/ui/config/ConfigTimers.qml:39
 msgctxt "Breaks as in break from work."
 msgid "Breaks"
 msgstr "Pauzes"
 
-#: contents/ui/config/ConfigTimers.qml:43
+#: contents/ui/config/ConfigTimers.qml:47
 msgid "Enable micro break timer"
 msgstr "Korte pauze inschakelen"
 
-#: contents/ui/config/ConfigTimers.qml:48
+#: contents/ui/config/ConfigTimers.qml:52
 msgid "Enable rest timer"
 msgstr "Rustpauze inschakelen"
 
-#: contents/ui/config/ConfigTimers.qml:53
+#: contents/ui/config/ConfigTimers.qml:57
 msgid "Enable daily limit timer"
 msgstr "Dagelijkse beperking inschakelen"
 
-#: contents/ui/config/ConfigTimers.qml:61
+#: contents/ui/config/ConfigTimers.qml:65
 msgid "Layout"
 msgstr "Indeling"
 
-#: contents/ui/config/ConfigTimers.qml:74
+#: contents/ui/config/ConfigTimers.qml:78
 msgctxt ""
 "Whether timers should be laid out horizontally/vertically/automatically"
 msgid "Orientation"
 msgstr "Oriëntatie"
 
-#: contents/ui/config/ConfigTimers.qml:83
+#: contents/ui/config/ConfigTimers.qml:87
 msgid "Auto"
 msgstr "Automatisch"
 
-#: contents/ui/config/ConfigTimers.qml:84
+#: contents/ui/config/ConfigTimers.qml:88
 msgid "Horizontal"
 msgstr "Horizontaal"
 
-#: contents/ui/config/ConfigTimers.qml:85
+#: contents/ui/config/ConfigTimers.qml:89
 msgid "Vertical"
 msgstr "Verticaal"
 
-#: contents/ui/config/ConfigTimers.qml:93
+#: contents/ui/config/ConfigTimers.qml:97
 msgid "Single timer display mode"
 msgstr "Eén klok per keer tonen"
 
-#: contents/ui/config/ConfigTimers.qml:95
+#: contents/ui/config/ConfigTimers.qml:99
 msgid ""
 "Check this if you want to display only a single timer at a time. Click or "
 "drag on it with a pointer if you want to switch to another timer."
 msgstr ""
-"Kruis aan als je slechts één klok per keer wilt tonen. Klik op of versleep"
-" een "
-"klok om een andere te tonen."
+"Kruis aan als je slechts één klok per keer wilt tonen. Klik op of versleep "
+"een klok om een andere te tonen."
 
-#: contents/ui/config/ConfigTimers.qml:108
+#: contents/ui/config/ConfigTimers.qml:112
 msgid "Switch timers periodically"
 msgstr "Periodiek wisselen van klok"
 
-#: contents/ui/config/ConfigTimers.qml:110
+#: contents/ui/config/ConfigTimers.qml:114
 msgid ""
 "Check this if you want to switch to another timer after given amount of "
 "seconds."
-msgstr ""
-"Kruis aan als je na een x-aantal seconden een andere klok wilt "
-"tonen."
+msgstr "Kruis aan als je na een x-aantal seconden een andere klok wilt tonen."
 
-#: contents/ui/config/ConfigTimers.qml:132
+#: contents/ui/config/ConfigTimers.qml:136
 msgid "Periodical switching interval in seconds"
 msgstr "Wisselmoment, in seconden"
 
-#: contents/ui/config/ConfigTimers.qml:143
+#: contents/ui/config/ConfigTimers.qml:147
 msgid "Switch timers conditionally"
 msgstr "Op bepaalde momenten wisselen van klok"
 
-#: contents/ui/config/ConfigTimers.qml:145
+#: contents/ui/config/ConfigTimers.qml:149
 msgid ""
 "Check this if you want to switch to another timer when a condition is met."
 msgstr "Kruis aan als je na een bepaald moment een andere klok wilt tonen."
 
-#: contents/ui/config/ConfigTimers.qml:157
+#: contents/ui/config/ConfigTimers.qml:161
 msgid "Switch on a difference between elapsed and limit time"
 msgstr "Overschakelen naar verstrijkende klok"
 
-#: contents/ui/config/ConfigTimers.qml:159
+#: contents/ui/config/ConfigTimers.qml:163
 msgid ""
 "Check this if you want to automatically switch to a timer closest to being "
 "overdue."
@@ -223,15 +219,43 @@ msgstr ""
 "Kruis aan als je automatisch wilt overschakelen naar de eerstvolgende klok "
 "waarvan de tijd dreigt te verstrijken."
 
-#: contents/ui/config/ConfigTimers.qml:177
+#: contents/ui/config/ConfigTimers.qml:181
 msgid "Difference between elapsed and limit time"
 msgstr "Wisselmoment"
 
+#: contents/ui/config/ConfigTimers.qml:188
+#, fuzzy
+msgid "Switch timers during idle time"
+msgstr "Periodiek wisselen van klok"
+
+#: contents/ui/config/ConfigTimers.qml:190
+#, fuzzy
+msgid ""
+"Check this if you want to automatically switch to the most informative timer "
+"during idle time."
+msgstr ""
+"Kruis aan als je automatisch wilt overschakelen naar de eerstvolgende klok "
+"waarvan de tijd dreigt te verstrijken."
+
+#: contents/ui/config/ConfigTimers.qml:197
+#, fuzzy
+msgid "Switch timers during non-idle time"
+msgstr "Periodiek wisselen van klok"
+
 #: contents/ui/config/ConfigTimers.qml:199
+#, fuzzy
+msgid ""
+"Check this if you want to automatically switch to the most informative timer "
+"during non-idle time."
+msgstr ""
+"Kruis aan als je automatisch wilt overschakelen naar de eerstvolgende klok "
+"waarvan de tijd dreigt te verstrijken."
+
+#: contents/ui/config/ConfigTimers.qml:220
 msgid "Detect Workrave configuration changes"
 msgstr "Workrave-instellingen volgen"
 
-#: contents/ui/config/ConfigTimers.qml:201
+#: contents/ui/config/ConfigTimers.qml:222
 msgctxt ""
 "The Applet can synchronize its settings with Workrave automatically, at "
 "certain time intervals, which will be using some CPU resources. The "
@@ -240,11 +264,10 @@ msgid ""
 "Disable if performance is of concern, and you want to update it manually in "
 "context menu."
 msgstr ""
-"Schakel uit als de prestaties in het gedrang komen en je liever handmatig"
-" wilt "
-"bijwerken via het rechtermuisnknopmenu."
+"Schakel uit als de prestaties in het gedrang komen en je liever handmatig "
+"wilt bijwerken via het rechtermuisnknopmenu."
 
-#: contents/ui/config/ConfigTimers.qml:214
+#: contents/ui/config/ConfigTimers.qml:235
 msgctxt ""
 "Timers can report their status e.g. every 5 seconds (instead of every 1 "
 "second) and thus need less CPU resources."
@@ -252,54 +275,61 @@ msgid ""
 "Set higher if performance is of concern, and you don't need frequent timer "
 "readings."
 msgstr ""
-"Verhoog als de prestaties in het gedrang komen en de tijd niet periodiek"
-" hoeft te "
-"worden bijgewerkt."
+"Verhoog als de prestaties in het gedrang komen en de tijd niet periodiek "
+"hoeft te worden bijgewerkt."
 
-#: contents/ui/config/ConfigTimers.qml:220
+#: contents/ui/config/ConfigTimers.qml:241
 msgid "Update interval in seconds"
 msgstr "Bijwerken na (in seconden)"
 
-#: contents/ui/main.qml:553
-msgid "Reload Workrave configuration"
-msgstr "Workrave-instellingen herladen"
-
-#: contents/ui/main.qml:554
-msgid "Recalculate applet size"
-msgstr "Widgetafmetingen herberekenen"
-
-#: contents/ui/main.qml:571
+#: contents/ui/main.qml:615
 msgid "Issue with qdbus"
 msgstr "Probleem m.b.t. qdbus"
 
-#: contents/ui/main.qml:572
+#: contents/ui/main.qml:616
 msgid ""
 "Please make sure that the command `qdbus org.workrave.Workrave` works "
 "without issues in your terminal."
 msgstr ""
-"Controleer of de opdracht `qdbus org.workrave.Workrave` probleemloos "
-"wordt uitgevoerd in een terminalvenster."
+"Controleer of de opdracht `qdbus org.workrave.Workrave` probleemloos wordt "
+"uitgevoerd in een terminalvenster."
 
-#: contents/ui/main.qml:574
+#: contents/ui/main.qml:618
 msgid "Workrave not installed"
 msgstr "Workrave is niet geïnstalleerd"
 
-#: contents/ui/main.qml:575
+#: contents/ui/main.qml:619
 msgid "Please install Workrave."
 msgstr "Installeer Workrave."
 
-#: contents/ui/main.qml:650
+#: contents/ui/main.qml:687
+msgid "Reload Workrave configuration"
+msgstr "Workrave-instellingen herladen"
+
+#: contents/ui/main.qml:695
+msgid "Recalculate applet size"
+msgstr "Widgetafmetingen herberekenen"
+
+#: contents/ui/main.qml:745
 msgid "No Workrave timers added"
 msgstr "Geen Workrave-tijdklokken"
 
-#: contents/ui/main.qml:651
+#: contents/ui/main.qml:746
 msgid "Please add a timer in applet settings."
 msgstr "Voeg een tijdklok toe in de widgetinstellingen."
 
 #: rc.cpp:1
-msgid "Workrave Applet"
-msgstr "Workrave-widget"
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
 
 #: rc.cpp:2
-msgid "Displays timers of Workrave"
-msgstr "Toon Workrave-tijdklokken"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#~ msgid "Workrave Applet"
+#~ msgstr "Workrave-widget"
+
+#~ msgid "Displays timers of Workrave"
+#~ msgstr "Toon Workrave-tijdklokken"
