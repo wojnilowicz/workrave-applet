@@ -611,7 +611,7 @@ PlasmoidItem {
         placeholderTooltip.visible = true
         let mainText = ""
         let subText = ""
-        if (data.stderr.includes("qdbus")) {
+        if (!dbusExecutableName) {
           mainText = i18n("Issue with qdbus")
           subText = i18n("Please make sure that the command `qdbus org.workrave.Workrave` works without issues in your terminal.")
         } else {
@@ -647,31 +647,12 @@ PlasmoidItem {
     id: qDBusNameCheck
     engine: 'executable'
     interval: 0
-    connectedSources: ["qdbus"]
+    connectedSources: ["sh `dirname " + plasmoid.metaData.fileName + "`/contents/script/detect_qdbus.sh"]
     onNewData: function(sourceName, data) {
       if (!interval)
         return
-      if (data.stderr.length > 0) {
-        qDBusQt6NameCheck.interval = 1
-      } else {
-        dbusExecutableName = "qdbus"
-        workraveCheckDBus.interval = 1
-      }
-      interval = 0
-    }
-  }
-
-  Plasma5Support.DataSource {
-    id: qDBusQt6NameCheck
-    engine: 'executable'
-    interval: 0
-    connectedSources: ["qdbus-qt6"]
-    onNewData: function(sourceName, data) {
-      if (!interval)
-        return
-      if (data.stderr.length > 0) {
-      } else {
-        dbusExecutableName = "qdbus-qt6"
+      if (data.stdout.trim().length > 0) {
+        dbusExecutableName = data.stdout.trim()
       }
       workraveCheckDBus.interval = 1
       interval = 0
