@@ -1,40 +1,43 @@
 /*
-    SPDX-FileCopyrightText: 2020-2022 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+    SPDX-FileCopyrightText: 2020-2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Dialogs 1.2
+import QtQuick 6.0
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Dialogs
+import org.kde.kcmutils as KCM
+import org.kde.kirigami as Kirigami
+
+KCM.SimpleKCM {
+    property alias cfg_iconEnabled: iconEnabled.checked
+    property alias cfg_iconHeightPercentage: iconHeightPercentage.value
+
+    property alias cfg_progressBarEnabled: progressBarEnabled.checked
+    property alias cfg_progressBarNormalBackground: normalBackground.chosenColor
+    property alias cfg_progressBarOverdueBackground: overdueBackground.chosenColor
+    property alias cfg_progressBarNormalForeground: normalForeground.chosenColor
+    property alias cfg_progressBarRestingElapsedForeground: restingElapsedForeground.chosenColor
+    property alias cfg_progressBarRestingForeground: restingForeground.chosenColor
+    property alias cfg_progressBarHeightPercentage: progressBarHeightPercentage.value
+
+    property alias cfg_labelEnabled: labelEnabled.checked
+    property alias cfg_useCustomFont: useCustomFont.checked
+    property alias cfg_customFont: fontDialog.selectedFont
+    property alias cfg_fontColor: fontColor.chosenColor
+    property alias cfg_showOnlyTheMostSignificantTimerPart: showOnlyTheMostSignificantTimerPart.checked
+    property alias cfg_showTimeUnits: showTimeUnits.checked
+    property alias cfg_showMinusSign: showMinusSign.checked
+
+    property alias cfg_timersExtraWidth: timersExtraWidth.value
+    property alias cfg_timersExtraHeight: timersExtraHeight.value
+    property alias cfg_timersSpacing: timersSpacing.value
 
 ColumnLayout {
   id: main
   spacing : 6
-
-  property alias cfg_iconEnabled: iconEnabled.checked
-  property alias cfg_iconHeightPercentage: iconHeightPercentage.value
-
-  property alias cfg_progressBarEnabled: progressBarEnabled.checked
-  property alias cfg_progressBarNormalBackground: normalBackground.chosenColor
-  property alias cfg_progressBarOverdueBackground: overdueBackground.chosenColor
-  property alias cfg_progressBarNormalForeground: normalForeground.chosenColor
-  property alias cfg_progressBarRestingElapsedForeground: restingElapsedForeground.chosenColor
-  property alias cfg_progressBarRestingForeground: restingForeground.chosenColor
-  property alias cfg_progressBarHeightPercentage: progressBarHeightPercentage.value
-
-  property alias cfg_labelEnabled: labelEnabled.checked
-  property alias cfg_useCustomFont: useCustomFont.checked
-  property alias cfg_customFont: fontDialog.font
-  property alias cfg_fontColor: fontColor.chosenColor
-  property alias cfg_showOnlyTheMostSignificantTimerPart: showOnlyTheMostSignificantTimerPart.checked
-  property alias cfg_showTimeUnits: showTimeUnits.checked
-  property alias cfg_showMinusSign: showMinusSign.checked
-
-  property alias cfg_timersExtraWidth: timersExtraWidth.value
-  property alias cfg_timersExtraHeight: timersExtraHeight.value
-  property alias cfg_timersSpacing: timersSpacing.value
 
   GroupBox {
     Layout.fillWidth: true
@@ -165,8 +168,8 @@ ColumnLayout {
               id: customFontButton
               text: i18n("Custom font...")
               onClicked: {
-                if (!fontDialog.font.family.length)
-                  fontDialog.font = theme.defaultFont
+                if (!fontDialog.selectedFont.family.length)
+                  fontDialog.selectedFont = Kirigami.Theme.defaultFont
                 fontDialog.open()
               }
             }
@@ -174,7 +177,7 @@ ColumnLayout {
             Button {
               Layout.fillWidth: true
               onClicked: {
-                fontDialog.font = theme.defaultFont
+                fontDialog.selectedFont = Kirigami.Theme.defaultFont
               }
 
               ToolTip {
@@ -313,4 +316,5 @@ ColumnLayout {
       }
     }
   }
+}
 }

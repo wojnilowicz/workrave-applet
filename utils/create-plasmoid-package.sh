@@ -5,7 +5,7 @@
 cd ..
 root_dir=$(pwd)
 
-version=$(grep Version ./src/metadata.desktop | cut -f2 -d'=')
+version=$(grep \"Version\" ./src/metadata.json | cut -f 2 -d: | tr -d "\", ")
 basename="workrave-applet"
 
 cd src

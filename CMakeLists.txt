@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.16.0)
 
-project("Workrave Applet" LANGUAGES C)
+project("Workrave Applet" LANGUAGES CXX)
 
 find_package(ECM REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} )
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-find_package(KF5 REQUIRED COMPONENTS Plasma)
+find_package(Plasma)
 
 plasma_install_package(src org.kde.workraveApplet)

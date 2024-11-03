@@ -1,18 +1,18 @@
 /*
-    SPDX-FileCopyrightText: 2020 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+    SPDX-FileCopyrightText: 2020-2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Dialogs 1.2
+import QtQuick 6.0
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Dialogs
 
 Item {
     id: colorPicker
 
-    property alias chosenColor: colorDialog.color
+    property alias chosenColor: colorDialog.selectedColor
     property alias colorLabel: labelElement.text
 
     width: childrenRect.width
@@ -22,7 +22,7 @@ Item {
     spacing : 6
       Rectangle {
         id: progressBarNormalBackground
-        color: colorDialog.color
+        color: colorDialog.selectedColor
         height: 20
         width: height
 
@@ -31,13 +31,13 @@ Item {
         }
 
         MouseArea {
-        id: mouseArea
-        anchors.fill: parent
-        hoverEnabled: true
-        onClicked: {
-            colorDialog.open()
+            id: mouseArea
+            anchors.fill: parent
+            hoverEnabled: true
+            onClicked: {
+                colorDialog.open()
+            }
         }
-    }
     }
     Label {
       id: labelElement

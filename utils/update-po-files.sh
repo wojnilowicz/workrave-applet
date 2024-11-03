@@ -16,10 +16,8 @@ xargs --arg-file=${WDIR}/rcfiles.list extractrc > ${WDIR}/rc.cpp
 # additional string for KAboutData
 echo 'i18nc("NAME OF TRANSLATORS","Your names");' >> ${WDIR}/rc.cpp
 echo 'i18nc("EMAIL OF TRANSLATORS","Your emails");' >> ${WDIR}/rc.cpp
-cd ${WDIR}
-
-intltool-extract --quiet --type=gettext/ini metadata.desktop.template
-mv metadata.desktop.template.h ${WDIR}/rc.cpp
+echo 'i18nc("Used in metadata.json for the Name key","Workrave Applet");' >> ${WDIR}/rc.cpp
+echo 'i18nc("Used in metadata.json for the Description key","Displays timers of Workrave");' >> ${WDIR}/rc.cpp
 cd ${WDIR}
 echo "Done preparing rc files"
 
@@ -43,10 +41,6 @@ for cat in $catalogs; do
   msgmerge -o $cat.new $cat ${PODIR}${PROJECT}.pot
   mv $cat.new $cat
 done
-
-cd ${WDIR}
-intltool-merge --quiet --desktop-style ${WDIR} metadata.desktop.template ${BASEDIR}metadata.desktop
-
 echo "Done merging translations"
 
 
