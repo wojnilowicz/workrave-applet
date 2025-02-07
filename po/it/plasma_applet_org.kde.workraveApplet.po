@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the workrave-applet package.
 #
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2020, 2022.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2020, 2022, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: workrave-applet\n"
 "Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
 "POT-Creation-Date: 2024-11-03 15:43+0100\n"
-"PO-Revision-Date: 2022-02-13 17:46+0100\n"
+"PO-Revision-Date: 2025-02-07 23:17+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -229,32 +229,28 @@ msgid "Difference between elapsed and limit time"
 msgstr "Differenza tra tempo trascorso e tempo limite"
 
 #: contents/ui/config/ConfigTimers.qml:188
-#, fuzzy
 msgid "Switch timers during idle time"
-msgstr "Cambia timer periodicamente"
+msgstr "Cambia timer durante l'inattività"
 
 #: contents/ui/config/ConfigTimers.qml:190
-#, fuzzy
 msgid ""
 "Check this if you want to automatically switch to the most informative timer "
 "during idle time."
 msgstr ""
-"Attiva questa opzione se vuoi passare automaticamente al timer più vicino "
-"alla scadenza."
+"Attiva questa opzione se vuoi passare automaticamente al timer più "
+"informativo in caso di inattività."
 
 #: contents/ui/config/ConfigTimers.qml:197
-#, fuzzy
 msgid "Switch timers during non-idle time"
-msgstr "Cambia timer periodicamente"
+msgstr "Cambia timer nel periodo di attività"
 
 #: contents/ui/config/ConfigTimers.qml:199
-#, fuzzy
 msgid ""
 "Check this if you want to automatically switch to the most informative timer "
 "during non-idle time."
 msgstr ""
-"Attiva questa opzione se vuoi passare automaticamente al timer più vicino "
-"alla scadenza."
+"Attiva questa opzione se vuoi passare automaticamente al timer più "
+"informativo in caso di inattività."
 
 #: contents/ui/config/ConfigTimers.qml:220
 msgid "Detect Workrave configuration changes"
@@ -326,12 +322,12 @@ msgstr "Aggiungi un timer dalle impostazioni dell'applet."
 #: rc.cpp:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Luigi Toscano"
 
 #: rc.cpp:2
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "luigi.toscano@tiscali.it"
 
 #: rc.cpp:3
 msgctxt "Used in metadata.json for the Name key"
