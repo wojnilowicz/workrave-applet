@@ -1,0 +1,336 @@
+# Copyright (C) 2020 This file is copyright:
+# This file is distributed under the same license as the workrave-applet package.
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: workrave-applet\n"
+"Report-Msgid-Bugs-To: https://github.com/wojnilowicz/workrave-applet/issues\n"
+"POT-Creation-Date: 2024-11-03 15:43+0100\n"
+"PO-Revision-Date: 2025-09-26 09:42+0200\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <(nothing)>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#: contents/config/config.qml:12
+msgid "Timers"
+msgstr "ტაიმერები"
+
+#: contents/config/config.qml:18
+msgid "Appearance"
+msgstr "გარეგნობა"
+
+#: contents/ui/config/ConfigAppearance.qml:46
+msgid "Display icon"
+msgstr "ხატულას ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:64
+#: contents/ui/config/ConfigAppearance.qml:126
+msgid "Height percentage"
+msgstr "სიმაღლის პროცენტულობა"
+
+#: contents/ui/config/ConfigAppearance.qml:73
+msgid "Display progress bar"
+msgstr "მიმდინარეობის პანელის ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:85
+msgid "Background in normal state"
+msgstr "ფონი ნორმალურ მდგომარეობაში"
+
+#: contents/ui/config/ConfigAppearance.qml:91
+msgid "Background in overdue state"
+msgstr "ფონი ვადაგადაცილებულ მდგომარეობაში"
+
+#: contents/ui/config/ConfigAppearance.qml:97
+msgid "Foreground in activity state"
+msgstr "წინა პლანი აქტიურ მდგომარეობაშ"
+
+#: contents/ui/config/ConfigAppearance.qml:103
+msgid "Foreground at idle time in elapsed time"
+msgstr "წინა პლანი უქმეობისას გასულ დროში"
+
+#: contents/ui/config/ConfigAppearance.qml:109
+msgid "Foreground at idle time"
+msgstr "წინა პლანი უქმეობისას"
+
+#: contents/ui/config/ConfigAppearance.qml:142
+msgid "Display label"
+msgstr "ჭდის ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:155
+msgid "Use custom font"
+msgstr "ხელით მითითებული ფონტის გამოყენება"
+
+#: contents/ui/config/ConfigAppearance.qml:169
+msgid "Custom font..."
+msgstr "ფონტის ხელით მითითება..."
+
+#: contents/ui/config/ConfigAppearance.qml:184
+msgid "Reset custom font to theme default."
+msgstr "მომხმარებლის ფონტის დაბრუნება თემის ნაგულისხმევზე."
+
+#: contents/ui/config/ConfigAppearance.qml:199
+msgid "Color"
+msgstr "ფერი"
+
+#: contents/ui/config/ConfigAppearance.qml:204
+msgid "Show only the most significant timer part"
+msgstr "ტაიმერის, მხოლოდ, ყველაზე საჭირო ნაწილის ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:206
+msgid ""
+"Check this if you want to hide e.g. seconds left when there are still some "
+"minutes left."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ, დამალოთ, რამდენი წამია დარჩენილი, თუ დარჩენილია "
+"წუთები."
+
+#: contents/ui/config/ConfigAppearance.qml:213
+msgid "Show time units"
+msgstr "დროის ერთეულების ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:215
+msgid "Check this if you want to show time units like: h, m, s in a timer."
+msgstr "ჩართეთ ეს, თუ გნებავთ, ტაიმერში დროის ერთეული აჩვენოთ ასე: სთ, წთ, წმ."
+
+#: contents/ui/config/ConfigAppearance.qml:221
+msgid "Show minus sign"
+msgstr "გამოკლების ნიშნის ჩვენება"
+
+#: contents/ui/config/ConfigAppearance.qml:223
+msgid "Check this if you want to show a minus sign if a timer is overdue."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ გამოკლების ნიშნის ჩვენება, თუ ტაიმერის დრო "
+"გადაცილებულია."
+
+#: contents/ui/config/ConfigAppearance.qml:231
+#: contents/ui/config/ConfigTimers.qml:212
+msgid "Misc"
+msgstr "სხვა"
+
+#: contents/ui/config/ConfigAppearance.qml:251
+msgid "Extra width per timer"
+msgstr "დამატებითი სიგანე ტაიმერზე"
+
+#: contents/ui/config/ConfigAppearance.qml:268
+msgid "Extra height per timer"
+msgstr "დამატებითი სიმაღლე ტაიმერზე"
+
+#: contents/ui/config/ConfigAppearance.qml:284
+msgid "Spacing between timers"
+msgstr "დაშორება ტაიმერებს შორის"
+
+#: contents/ui/config/ConfigAppearance.qml:293
+msgid "Use Workrave colors"
+msgstr "Workrave-ის ფერების გამოყენება"
+
+#: contents/ui/config/ConfigAppearance.qml:306
+msgid "Use system theme colors"
+msgstr "სისტემური თემის ფერების გამოყენება"
+
+#: contents/ui/config/ConfigTimers.qml:39
+msgctxt "Breaks as in break from work."
+msgid "Breaks"
+msgstr "დასვენებები"
+
+#: contents/ui/config/ConfigTimers.qml:47
+msgid "Enable micro break timer"
+msgstr "მიკროდასვენების ტაიმერის ჩართვა"
+
+#: contents/ui/config/ConfigTimers.qml:52
+msgid "Enable rest timer"
+msgstr "დასვენების ტაიმერის ჩართვა"
+
+#: contents/ui/config/ConfigTimers.qml:57
+msgid "Enable daily limit timer"
+msgstr "ყოველდღიური ლიმიტის ტაიმერის ჩართვა"
+
+#: contents/ui/config/ConfigTimers.qml:65
+msgid "Layout"
+msgstr "განლაგება"
+
+#: contents/ui/config/ConfigTimers.qml:78
+msgctxt ""
+"Whether timers should be laid out horizontally/vertically/automatically"
+msgid "Orientation"
+msgstr "ორიენტაცია"
+
+#: contents/ui/config/ConfigTimers.qml:87
+msgid "Auto"
+msgstr "ავტო"
+
+#: contents/ui/config/ConfigTimers.qml:88
+msgid "Horizontal"
+msgstr "ჰორიზონტალური"
+
+#: contents/ui/config/ConfigTimers.qml:89
+msgid "Vertical"
+msgstr "ვერტიკალური"
+
+#: contents/ui/config/ConfigTimers.qml:97
+msgid "Single timer display mode"
+msgstr "ერთჯერადი ტაიმერის ჩვენების რეჟიმი"
+
+#: contents/ui/config/ConfigTimers.qml:99
+msgid ""
+"Check this if you want to display only a single timer at a time. Click or "
+"drag on it with a pointer if you want to switch to another timer."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ, ერთდროულად, მხოლოდ, ერთი ტაიმერი იყოს ნაჩვენები. "
+"დააწკაპუნეთ, ან გადაათრიეთ ის კურსორით, თუ სხვა ტაიმერზე გნებავთ გადართვა."
+
+#: contents/ui/config/ConfigTimers.qml:112
+msgid "Switch timers periodically"
+msgstr "ტაიმერების პერიოდული გადართვა"
+
+#: contents/ui/config/ConfigTimers.qml:114
+msgid ""
+"Check this if you want to switch to another timer after given amount of "
+"seconds."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ მითითებული რაოდენობის წამების შემდეგ სხვა ტაიმერზე "
+"გადაერთოთ."
+
+#: contents/ui/config/ConfigTimers.qml:136
+msgid "Periodical switching interval in seconds"
+msgstr "პერიოდული გადართვის შუალედი წამებში"
+
+#: contents/ui/config/ConfigTimers.qml:147
+msgid "Switch timers conditionally"
+msgstr "ტაიმერების გადართვა პირობით"
+
+#: contents/ui/config/ConfigTimers.qml:149
+msgid ""
+"Check this if you want to switch to another timer when a condition is met."
+msgstr "ჩართეთ, თუ გნებავთ გადართვა სხვა ტაიმერზე, როცა პირობა შესრულდება."
+
+#: contents/ui/config/ConfigTimers.qml:161
+msgid "Switch on a difference between elapsed and limit time"
+msgstr "გადართვა გასულსა და დარჩენილ დროებს შორის სხვაობისას"
+
+#: contents/ui/config/ConfigTimers.qml:163
+msgid ""
+"Check this if you want to automatically switch to a timer closest to being "
+"overdue."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ ავტომატურად გადართვა ტაიმერზე, რომელიც ყველაზე ახლოსაა "
+"გადაცილებასთან."
+
+#: contents/ui/config/ConfigTimers.qml:181
+msgid "Difference between elapsed and limit time"
+msgstr "სხვაობა დარჩენილსა და ლიმიტის დროებს შორის"
+
+#: contents/ui/config/ConfigTimers.qml:188
+msgid "Switch timers during idle time"
+msgstr "ტაიმერების გადართვა უქმეობის დროს"
+
+#: contents/ui/config/ConfigTimers.qml:190
+msgid ""
+"Check this if you want to automatically switch to the most informative timer "
+"during idle time."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ ავტომატური გადართვა ყველაზე მეტი ინფორმაციის მქონე "
+"ტაიმერზე უქმეობის დროს."
+
+#: contents/ui/config/ConfigTimers.qml:197
+msgid "Switch timers during non-idle time"
+msgstr "ტაიმერების გადართვა არა-უქმეობის დროს"
+
+#: contents/ui/config/ConfigTimers.qml:199
+msgid ""
+"Check this if you want to automatically switch to the most informative timer "
+"during non-idle time."
+msgstr ""
+"ჩართეთ ეს, თუ გნებავთ ავტომატური გადართვა ყველაზე მეტი ინფორმაციის მქონე "
+"ტაიმერზე არა-უქმეობის დროს."
+
+#: contents/ui/config/ConfigTimers.qml:220
+msgid "Detect Workrave configuration changes"
+msgstr "Workrave-ის კონფიგურაციის ცვლილებების აღმოჩენა"
+
+#: contents/ui/config/ConfigTimers.qml:222
+msgctxt ""
+"The Applet can synchronize its settings with Workrave automatically, at "
+"certain time intervals, which will be using some CPU resources. The "
+"alternative is letting the user to do it manually only when needed."
+msgid ""
+"Disable if performance is of concern, and you want to update it manually in "
+"context menu."
+msgstr ""
+"გამორთეთ, თუ გგონიათ, რომ ის რესურსებს ხარჯავს და გნებავთ, ის ხელით "
+"განაახლოთ კონტექსტურ მენიუში."
+
+#: contents/ui/config/ConfigTimers.qml:235
+msgctxt ""
+"Timers can report their status e.g. every 5 seconds (instead of every 1 "
+"second) and thus need less CPU resources."
+msgid ""
+"Set higher if performance is of concern, and you don't need frequent timer "
+"readings."
+msgstr ""
+"დააყენეთ უფრო დიდი, თუ გგონიათ, რომ ეს რესურსებს ხარჯავს და არ გჭირდებათ "
+"ტაიმერების ხშირი წაკითხვა."
+
+#: contents/ui/config/ConfigTimers.qml:241
+msgid "Update interval in seconds"
+msgstr "განახლების ინტერვალი, წამებში"
+
+#: contents/ui/main.qml:615
+msgid "Issue with qdbus"
+msgstr "პრობლემა qdbus-თან"
+
+#: contents/ui/main.qml:616
+msgid ""
+"Please make sure that the command `qdbus org.workrave.Workrave` works "
+"without issues in your terminal."
+msgstr ""
+"დარწმუნდით, რომ ბრძანება `qdbus org.workrave.Workrave` ტერმინალში უპრობლემოდ "
+"მუშაობს."
+
+#: contents/ui/main.qml:618
+msgid "Workrave not installed"
+msgstr "Workrave დაყენებული არაა"
+
+#: contents/ui/main.qml:619
+msgid "Please install Workrave."
+msgstr "დააყენეთ Workrave."
+
+#: contents/ui/main.qml:668
+msgid "Reload Workrave configuration"
+msgstr "Workrave-ის კონფიგურაციის თავიდან ჩატვირთვა"
+
+#: contents/ui/main.qml:676
+msgid "Recalculate applet size"
+msgstr "აპლეტის ზომის თავიდან გამოთვლა"
+
+#: contents/ui/main.qml:726
+msgid "No Workrave timers added"
+msgstr "Workrave-ის ტაიმერები დამატებული არაა"
+
+#: contents/ui/main.qml:727
+msgid "Please add a timer in applet settings."
+msgstr "დაამატეთ ტაიმერი აპლეტის პარამეტრებში."
+
+#: rc.cpp:1
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Temuri Doghonadze"
+
+#: rc.cpp:2
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "temuri.doghonadze@gmail.com"
+
+#: rc.cpp:3
+msgctxt "Used in metadata.json for the Name key"
+msgid "Workrave Applet"
+msgstr "Workrave Applet"
+
+#: rc.cpp:4
+msgctxt "Used in metadata.json for the Description key"
+msgid "Displays timers of Workrave"
+msgstr "აჩვენებს ტაიმერებს Workrave-ში"
